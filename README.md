@@ -11,6 +11,7 @@ JavaScript custom Extensions
 
 ## 1. Array.prototype.last()
 > The **last()** method returns the last element of the array, or undefined if the array is empty.
+
 ### Syntax
 ```js
 var last = [1,2,3].last();
