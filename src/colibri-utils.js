@@ -1,6 +1,12 @@
+// required colibri.js
 var Colibri = {};
 Colibri.utils = {};
 
+/**
+ * Generates random Guid * 
+ * @return {String} random Guid. Example: "656fa0e4-11e9-4b89-8ae5-752cfe807b8f".
+ * https://en.wikipedia.org/wiki/Globally_unique_identifier
+ */
 Colibri.utils.createGuid = (function () {
     function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)
@@ -14,7 +20,28 @@ Colibri.utils.createGuid = (function () {
     };
 })();
 
-
+/**
+ * Generates random integer
+ * @param {Number} min 
+ * @param {Number} max
+ * @return {Number} random integer that is between min and max. 
+ * If min is not specified it set to 0. If max is not specified it set to Number.MAX_VALUE.
+ */
 Colibri.utils.getRandomInt = function(min, max) {	
+    if(min && !Number.isInteger(min)){
+      throw new Error("If the first parameter specified it should be int.");
+    }
+
+    if(max && !Number.isInteger(max)){
+      throw new Error("If the second parameter specified it should be int.");
+    }
+
+    min = Number.isInteger(min) ? min : 0;
+    max = Number.isInteger(max) ? max : Number.MAX_VALUE;
+
+    if(min > max){
+      throw new Error("First parameter should be less then the second one.");
+    }
+
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
