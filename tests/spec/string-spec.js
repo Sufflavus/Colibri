@@ -108,6 +108,17 @@ describe("String 'indexOfInsensitive'", function() {
 		
         expect(actual).toEqual(expectedIndex);
     });	
+
+    it("returns correct result for int searchValue", function() {
+		var source = "Lorem 8 ipsum ip";		
+		var searchValue = 8;		
+		var fromIndex = 3;
+		var expectedIndex = 6;
+
+		var actual = source.indexOfInsensitive(searchValue, fromIndex);
+		
+        expect(actual).toEqual(expectedIndex);
+    });	
 });
 
 describe("String 'endsWith'", function() {

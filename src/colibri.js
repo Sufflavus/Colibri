@@ -1,71 +1,22 @@
 (function(){
 	/*has tests*/
-	if (!Array.prototype.last) {
-		Array.prototype.last = function() {
-		    return this[this.length - 1];
-		};
-	}
-
-	/*has tests*/
-	if (!Array.prototype.first) {
-		Array.prototype.first = function() {
-		    return this[0];
-		};
-	}
-
-	/*has tests*/
-	if (!Array.prototype.isEmpty) {
-		Array.prototype.isEmpty = function() {
-		    return this.length === 0;
-		};
-	}
-	
-	if (!Array.prototype.removeEmpty) {
-	    Array.prototype.removeEmpty = function() {
-	        return this.filter(function(item) { 
-	        	return item; 
-	        });	        
-	    };
-	}
-
-	/*has tests*/
-	if (!Array.prototype.contains) {
-	    Array.prototype.contains = function (value) {
-	        return this.indexOf(value) >= 0;
-	    };
-	}
-
-	if (!Array.prototype.indexOfInsensitive) {
-	    Array.prototype.indexOfInsensitive = function (value) {
-	        var upperCaseArray = this.map(function (value) {
-	            return value.toUpperCase();
-	        });
-	        return upperCaseArray.indexOf(value.toUpperCase());
-	    };
-	}
-
-	if (!Array.prototype.max) {
-	    Array.prototype.max = function () {
-	        return Math.max.apply(Math, this);
-	    };
-	}
-
-	if (!Array.prototype.min) {
-	    Array.prototype.min = function () {
-	        return Math.min.apply(Math, this);
-	    };
-	}
-
-	if (!Object.prototype.clone) {
-		Object.prototype.clone = function() {
-			return JSON.parse(JSON.stringify(this));
-		};
-	}
-	
-	/*has tests*/
 	if (!Object.prototype.isArray) {
 		Object.prototype.isArray = function() {
 			return Object.prototype.toString.call(this) === "[object Array]";
+		};
+	}
+
+	/*has tests*/
+	if (!Object.prototype.isString) {
+		Object.prototype.isString = function() {
+			return Object.prototype.toString.call(this) === "[object String]";
+		};
+	}
+
+	/*has tests*/
+	if (!Object.prototype.clone) {
+		Object.prototype.clone = function() {
+			return JSON.parse(JSON.stringify(this));
 		};
 	}
 
@@ -98,6 +49,8 @@
 	    	if(!this.length){
 	    		return -1;
 	    	}
+
+	    	// TODO: type of parameters
 
 	    	if(!searchValue.length){
 	    		return this.indexOf(searchValue, fromIndex);
@@ -135,12 +88,102 @@
 	    };
 	}
 
+	/*has tests*/
 	if (!Date.prototype.addDays) {
 	    Date.prototype.addDays = function(daysCount) {
-	        var dat = new Date(this.valueOf());
-	        dat.setDate(dat.getDate() + daysCount);
-	        return dat;
+	    	if(!Number.isInteger(daysCount)){
+				throw new Error("Parameter daysCount should be number.");
+	    	}
+
+	        var date = new Date(this.valueOf());
+	        date.setDate(date.getDate() + daysCount);
+	        return date;
 	    }
+	}
+	
+	/*has tests*/
+	if (!Array.prototype.last) {
+		Array.prototype.last = function() {
+		    return this[this.length - 1];
+		};
+	}
+
+	/*has tests*/
+	if (!Array.prototype.first) {
+		Array.prototype.first = function() {
+		    return this[0];
+		};
+	}
+
+	/*has tests*/
+	if (!Array.prototype.isEmpty) {
+		Array.prototype.isEmpty = function() {
+		    return this.length === 0;
+		};
+	}
+	
+	/*has tests*/
+	if (!Array.prototype.removeEmpty) {
+	    Array.prototype.removeEmpty = function() {
+	        return this.filter(function(item) { 
+	        	return item === 0 || !!item; 
+	        });	        
+	    };
+	}
+
+	/*has tests*/
+	if (!Array.prototype.contains) {
+	    Array.prototype.contains = function (value) {
+	        return this.indexOf(value) >= 0;
+	    };
+	}
+
+	/*has tests*/
+	if (!Array.prototype.indexOfInsensitive) {
+	    Array.prototype.indexOfInsensitive = function (value) {
+	    	if(!value.isString()){
+	    		return this.indexOf(value);
+	    	}
+
+	        var upperCaseArray = this.map(function (item) {
+	            return item.isString() ? item.toUpperCase() : item;
+	        });
+	        return upperCaseArray.indexOf(value.toUpperCase());
+	    };
+	}
+
+	/*has tests*/
+	if (!Array.prototype.max) {
+	    Array.prototype.max = function () {
+	    	if(!this.length){
+	    		return undefined;
+	    	}
+
+	    	for(var i = 0, j = this.length; i < j; i++){
+	    		if(!Number.isFloat(this[i])){
+	    			throw new Error("All items in array should be numbers.");
+	    		}
+	    	}
+
+	        return Math.max.apply(Math, this);
+	    };
+	}
+
+	/*has tests*/
+	if (!Array.prototype.min) {
+	    Array.prototype.min = function () {
+	    	if(!this.length){
+	    		return undefined;
+	    	}
+
+	    	for(var i = 0, j = this.length; i < j; i++){
+	    		if(!Number.isFloat(this[i])){
+	    			throw new Error("All items in array should be numbers.");
+	    		}
+	    	}
+
+	        return Math.min.apply(Math, this);
+	    };
 	}
 
 	Function.prototype.memoized = function () {
