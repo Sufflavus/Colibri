@@ -1,7 +1,22 @@
 # Colibri
-JavaScript custom Extensions
+JavaScript custom Extensions and helpful functions
 
-## List of extensions
+## Setup & Dependencies
+1. colibri.js (does not have any dependencies)
+2. colibri-utils.js (depends on colibri.js)
+
+```html
+<head>
+    
+</head>
+<body>
+
+    <script src="../src/colibri.js"></script>
+    <script src="../src/colibri-utils.js"></script>
+</body>
+```
+
+## List of extensions (colibri.js)
 
 ### *Object extensions*
 1. Object.prototype.isArray()
@@ -33,13 +48,13 @@ JavaScript custom Extensions
 7. Array.prototype.max()
 8. Array.prototype.min()
 
-## Colibri.utils functions
+## Colibri.utils functions (colibri-utils.js)
 1. Colibri.utils.createGuid()
 2. Colibri.utils.getRandomInt(min, max)
 
 ## Object extensions
 ### 1. Object.prototype.isArray()
-> The **isArray()** method determines whether the passed value is Array.
+> The **isArray()** method determines whether the tested object is Array.
 
 #### Syntax
 ```js
@@ -49,12 +64,12 @@ var isArray = value.isArray();
 #### Examples
 
 ```js
-[1,2,3].isArray(); // true
-"a".isArray(); // false
+[1,2,3].isArray();  // true
+"a".isArray();      // false
 ```
 
 ### 2. Object.prototype.isString()
-> The **isString()** method determines whether the passed value is String.
+> The **isString()** method determines whether the tested object is String.
 
 ### Syntax
 ```js
@@ -64,24 +79,24 @@ var isString = value.isString();
 ### Examples
 
 ```js
-"a".isString(); // true
-"".isString(); // true
-[1,2,3].isString(); // false
+"a".isString();      // true
+"".isString();       // true
+[1,2,3].isString();  // false
 ```
 
 ### 3. Object.prototype.clone()
-> The **clone()** method returns a clone of object (only data fields, not function).
+> The **clone()** method returns a clone of the object (only data fields, not function).
 
 ### Syntax
 ```js
-var value = {a: {b: 1}};
+var value = { a: { b: 1 } };
 var clone = value.clone();
 ```
 ### Examples
 
 ```js
-var value = {a: {b: 1}};
-var clone = value.clone(); // {a: {b: 1}}
+var value = { a: { b: 1 } };
+var clone = value.clone(); // { a: { b: 1 } }
 
 value = { 
 			a: { 
@@ -91,10 +106,34 @@ value = {
 			c: "lorem"
 		};
 
-clone = value.clone(); // {a: {b: 1}, c: "lorem"}
+clone = value.clone();     // { a: { b: 1 }, c: "lorem" }
 
 value = "Lorem";
-clone = value.clone(); // "Lorem"
+clone = value.clone();     // "Lorem"
+```
+
+## Number extensions
+### 1. Number.isInteger()
+> The **isInteger()** method determines whether the passed value is an integer.
+
+#### Syntax
+```js
+Number.isInteger(value);
+```
+
+#### Parameters
+* **value** - The value to be tested for being an integer.
+
+#### Examples
+
+```js
+Number.isInteger(0.1);     // false
+Number.isInteger(1);       // true
+Number.isInteger(Math.PI); // false
+Number.isInteger(-100000); // true
+Number.isInteger(NaN);     // false
+Number.isInteger(0);       // true
+Number.isInteger("10");    // false
 ```
 
 ## Array extensions
@@ -108,9 +147,9 @@ var last = [1,2,3].last();
 ### Examples
 
 ```js
-[1,2,3].last(); // 3
-["a"].last(); // "a"
-[].last(); // undefined
+[1,2,3].last();  // 3
+["a"].last();    // "a"
+[].last();       // undefined
 ```
 
 ### 2. Array.prototype.first()
@@ -123,12 +162,10 @@ var first = [1,2,3].first();
 ### Examples
 
 ```js
-[1,2,3].first(); // 1
-["a"].last(); // "a"
-[].last(); // undefined
+[1,2,3].first();  // 1
+["a"].last();     // "a"
+[].last();        // undefined
 ```
 
 ## LICENSE
-[The MIT License][License]
-
-[License]:(https://github.com/Sufflavus/Colibri/blob/master/LICENSE)
+[The MIT License](https://github.com/Sufflavus/Colibri/blob/master/LICENSE)
