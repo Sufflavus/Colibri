@@ -129,13 +129,37 @@ Number.isInteger(value);
 #### Examples
 
 ```js
-Number.isInteger(0.1);     // false
-Number.isInteger(1);       // true
-Number.isInteger(Math.PI); // false
-Number.isInteger(-100000); // true
-Number.isInteger(NaN);     // false
-Number.isInteger(0);       // true
-Number.isInteger("10");    // false
+Number.isInteger(0.1);      // false
+Number.isInteger(1);        // true
+Number.isInteger(Math.PI);  // false
+Number.isInteger(-100000);  // true
+Number.isInteger(0);        // true
+Number.isInteger("10");     // false
+Number.isInteger(null);     // false
+```
+
+### 2. Number.isFloat()
+> The **isFloat()** method determines whether the passed value is an float.
+
+#### Syntax
+```js
+Number.isFloat(value);
+```
+
+#### Parameters
+* **value** - The value to be tested for being a float.
+
+#### Examples
+
+```js
+Number.isFloat(0.1);      // true
+Number.isFloat(-10.1);    // true
+Number.isFloat(1);        // true
+Number.isFloat(Math.PI);  // true
+Number.isFloat(-100000);  // true
+Number.isFloat(NaN);      // false
+Number.isFloat(0);        // true
+Number.isFloat("10");     // false
 ```
 
 ## String extensions
