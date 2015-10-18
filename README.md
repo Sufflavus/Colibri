@@ -116,6 +116,8 @@ clone = value.clone();     // "Lorem"
 ### 1. Number.isInteger()
 > The **isInteger()** method determines whether the passed value is an integer.
 
+_For more information visit [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger)_
+
 #### Syntax
 ```js
 Number.isInteger(value);
@@ -134,6 +136,25 @@ Number.isInteger(-100000); // true
 Number.isInteger(NaN);     // false
 Number.isInteger(0);       // true
 Number.isInteger("10");    // false
+```
+
+## String extensions
+### 1. String.prototype.trim()
+> The **trim()** method removes spaces from the beginning and the ending of the string but not from the middle of the string.
+
+#### Syntax
+```js
+var value = "  Lorem impus ";
+var result = value.trim();
+```
+#### Examples
+
+```js
+"  Lorem impus ".trim();                      // "Lorem impus"
+"Lorem impus".trim();                         // "Lorem impus"
+"  Lorem   ipsum   dolor   sit amet".trim();  // "Lorem   ipsum   dolor   sit amet"
+"   ".trim();                                 // ""
+"".trim();                                    // ""
 ```
 
 ## Array extensions
