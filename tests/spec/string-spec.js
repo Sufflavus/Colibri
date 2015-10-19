@@ -150,6 +150,33 @@ describe("String 'endsWith'", function() {
         expect(actual).toBe(true);
     });	
 
+    it("returns false for null suffix", function() {
+		var source = "Lorem ipsum";		
+		var suffix = null;
+
+		var actual = source.endsWith(suffix);
+		
+        expect(actual).toBe(false);
+    });	
+
+    it("returns false for undefined suffix", function() {
+		var source = "Lorem ipsum";		
+		var suffix = undefined;
+
+		var actual = source.endsWith(suffix);
+		
+        expect(actual).toBe(false);
+    });
+
+    it("returns false for NaN suffix", function() {
+		var source = "Lorem ipsum";		
+		var suffix = NaN;
+
+		var actual = source.endsWith(suffix);
+		
+        expect(actual).toBe(false);
+    });
+
     it("returns true if source ends with suffix", function() {
 		var source = "Lorem ipsum";		
 		var suffix = "ipsum";		
@@ -161,7 +188,7 @@ describe("String 'endsWith'", function() {
 
     it("returns false if source does not end with suffix", function() {
 		var source = "Lorem ipsum";		
-		var suffix = "Lorem";		
+		var suffix = "amet";		
 
 		var actual = source.endsWith(suffix);
 		
@@ -207,6 +234,33 @@ describe("String 'endsWithInsensitive'", function() {
         expect(actual).toBe(true);
     });	
 
+    it("returns false for null suffix", function() {
+		var source = "Lorem ipsum";		
+		var suffix = null;
+
+		var actual = source.endsWithInsensitive(suffix);
+		
+        expect(actual).toBe(false);
+    });	
+
+    it("returns false for undefined suffix", function() {
+		var source = "Lorem ipsum";		
+		var suffix = undefined;
+
+		var actual = source.endsWithInsensitive(suffix);
+		
+        expect(actual).toBe(false);
+    });
+
+    it("returns false for NaN suffix", function() {
+		var source = "Lorem ipsum";		
+		var suffix = NaN;
+
+		var actual = source.endsWithInsensitive(suffix);
+		
+        expect(actual).toBe(false);
+    });
+
     it("returns true if source ends with suffix", function() {
 		var source = "Lorem ipsum";		
 		var suffix = "ipsum";		
@@ -218,7 +272,7 @@ describe("String 'endsWithInsensitive'", function() {
 
     it("returns false if source does not end with suffix", function() {
 		var source = "Lorem ipsum";		
-		var suffix = "Lorem";		
+		var suffix = "amet";		
 
 		var actual = source.endsWithInsensitive(suffix);
 		
@@ -264,6 +318,33 @@ describe("String 'startsWith'", function() {
         expect(actual).toBe(true);
     });	
 
+    it("returns false for null prefix", function() {
+		var source = "Lorem ipsum";		
+		var prefix = null;
+
+		var actual = source.startsWith(prefix);
+		
+        expect(actual).toBe(false);
+    });	
+
+    it("returns false for undefined prefix", function() {
+		var source = "Lorem ipsum";		
+		var prefix = undefined;
+
+		var actual = source.startsWith(prefix);
+		
+        expect(actual).toBe(false);
+    });
+
+    it("returns false for NaN prefix", function() {
+		var source = "Lorem ipsum";		
+		var prefix = NaN;
+
+		var actual = source.startsWith(prefix);
+		
+        expect(actual).toBe(false);
+    });
+
     it("returns true if source starts with prefix", function() {
 		var source = "Lorem ipsum";		
 		var prefix = "Lorem";		
@@ -275,7 +356,7 @@ describe("String 'startsWith'", function() {
 
     it("returns false if source does not start with prefix", function() {
 		var source = "Lorem ipsum";		
-		var prefix = "ipsum";		
+		var prefix = "amet";		
 
 		var actual = source.startsWith(prefix);
 		
@@ -321,6 +402,33 @@ describe("String 'startsWithInsensitive'", function() {
         expect(actual).toBe(true);
     });	
 
+    it("returns false for null prefix", function() {
+		var source = "Lorem ipsum";		
+		var prefix = null;
+
+		var actual = source.startsWithInsensitive(prefix);
+		
+        expect(actual).toBe(false);
+    });	
+
+    it("returns false for undefined prefix", function() {
+		var source = "Lorem ipsum";		
+		var prefix = undefined;
+
+		var actual = source.startsWithInsensitive(prefix);
+		
+        expect(actual).toBe(false);
+    });
+
+    it("returns false for NaN prefix", function() {
+		var source = "Lorem ipsum";		
+		var prefix = NaN;
+
+		var actual = source.startsWithInsensitive(prefix);
+		
+        expect(actual).toBe(false);
+    });
+
     it("returns true if source starts with prefix", function() {
 		var source = "Lorem ipsum";		
 		var prefix = "Lorem";		
@@ -332,7 +440,7 @@ describe("String 'startsWithInsensitive'", function() {
 
     it("returns false if source does not start with prefix", function() {
 		var source = "Lorem ipsum";		
-		var prefix = "ipsum";		
+		var prefix = "amet";		
 
 		var actual = source.startsWithInsensitive(prefix);
 		

@@ -58,9 +58,12 @@ JavaScript custom Extensions and helpful functions
 
 #### Syntax
 ```js
-var value = [1,2,3];
-var isArray = value.isArray();
+object.isArray();
 ```
+
+#### Return Value
+**true** if the tested object is Array; otherwise, **false**.
+
 #### Examples
 
 ```js
@@ -71,12 +74,15 @@ var isArray = value.isArray();
 ### 2. Object.prototype.isString()
 > The **isString()** method determines whether the tested object is String.
 
-### Syntax
+#### Syntax
 ```js
-var value = "";
-var isString = value.isString();
+object.isString();
 ```
-### Examples
+
+#### Return Value
+**true** if the tested object is String; otherwise, **false**.
+
+#### Examples
 
 ```js
 "a".isString();      // true
@@ -87,12 +93,15 @@ var isString = value.isString();
 ### 3. Object.prototype.clone()
 > The **clone()** method returns a clone of the object (only data fields, not function).
 
-### Syntax
+#### Syntax
 ```js
-var value = { a: { b: 1 } };
-var clone = value.clone();
+object.clone();
 ```
-### Examples
+
+#### Return Value
+**object** that is clone of the passed object.
+
+#### Examples
 
 ```js
 var value = { a: { b: 1 } };
@@ -126,6 +135,9 @@ Number.isInteger(value);
 #### Parameters
 * **value** - The value to be tested for being an integer.
 
+#### Return Value
+**true** if the tested object is integer; otherwise, **false**.
+
 #### Examples
 
 ```js
@@ -149,6 +161,9 @@ Number.isFloat(value);
 #### Parameters
 * **value** - The value to be tested for being a float.
 
+#### Return Value
+**true** if the tested object is integer; otherwise, **false**.
+
 #### Examples
 
 ```js
@@ -168,9 +183,12 @@ Number.isFloat("10");     // false
 
 #### Syntax
 ```js
-var value = "  Lorem impus ";
-var result = value.trim();
+str.trim();
 ```
+
+#### Return Value
+The string that remains after all spaces are removed from the start and end of the current string.
+
 #### Examples
 
 ```js
@@ -181,15 +199,154 @@ var result = value.trim();
 "".trim();                                    // ""
 ```
 
+### 2. String.prototype.indexOfInsensitive()
+> The **indexOfInsensitive()** method returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found.
+> The indexOfInsensitive() method is case insensitive.
+
+#### Syntax
+```js
+str.indexOfInsensitive(searchValue[, fromIndex]);
+```
+
+#### Parameters
+* **searchValue** - A string representing the value to search for.
+* **fromIndex** - (optional) The location within the calling string to start the search from. It can be any integer. The default value is 0. If fromIndex < 0 the entire string is searched (same as passing 0). If fromIndex >= str.length, the method will return -1 unless searchValue is an empty string in which case str.length is returned.
+
+_For more information visit [developer.mozilla.org](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)_
+
+#### Return Value
+The zero-based **index** position of value if that value is found, or **-1** if it is not.
+
+#### Examples
+
+```js
+"Lorem impus".indexOfInsensitive("Lorem");  // 0
+"Lorem impus".indexOfInsensitive("LoReM");  // 0
+"Lorem impus".indexOfInsensitive("Norem");  // -1
+"Lorem impus".indexOfInsensitive("IM");     // 6
+"Lorem impus".indexOfInsensitive("IM", 5);  // 6
+
+```
+
+### 3. String.prototype.endsWith()
+> The **endsWith()** method determines whether the end of this string instance matches the specified string suffix.
+> The endsWith() method is case sensitive.
+
+#### Syntax
+```js
+str.endsWith(suffix);
+```
+
+#### Parameters
+* **suffix** - The string to compare to the substring at the end of this instance.
+
+#### Return Value
+**true** if value matches the end of this instance; otherwise, **false**.
+
+#### Examples
+
+```js
+"Lorem impus".endsWith("impus");  // true
+"Lorem impus".endsWith("IMPUS");  // false
+"Lorem impus".endsWith("amet");   // false
+"Lorem impus".endsWith("");       // true
+"Lorem impus".endsWith(null);     // false
+"Lorem impus 5".endsWith(5);      // true
+"".endsWith("")                   // true
+```
+
+### 4. String.prototype.endsWithInsensitive()
+> The **endsWithInsensitive()** method determines whether the end of this string instance matches the specified string suffix.
+> The endsWithInsensitive() method is case insensitive.
+
+#### Syntax
+```js
+str.endsWithInsensitive(suffix);
+```
+
+#### Parameters
+* **suffix** - The string to compare to the substring at the end of this instance.
+
+#### Return Value
+**true** if value matches the end of this instance; otherwise, **false**.
+
+#### Examples
+
+```js
+"Lorem impus".endsWithInsensitive("impus");  // true
+"Lorem impus".endsWithInsensitive("IMPUS");  // true
+"Lorem impus".endsWithInsensitive("amet");   // false
+"Lorem impus".endsWithInsensitive("");       // true
+"Lorem impus".endsWithInsensitive(null);     // false
+"Lorem impus 5".endsWithInsensitive(5);      // true
+"".endsWithInsensitive("")                   // true
+```
+
+
+### 5. String.prototype.startsWith()
+> The **startsWith()** method determines whether the beginning of this string instance matches the specified string prefix.
+> The startsWith() method is case sensitive.
+
+#### Syntax
+```js
+str.startsWith(prefix);
+```
+
+#### Parameters
+* **prefix** - The string to compare to the substring at the beginning of this instance.
+
+#### Return Value
+**true** if value matches the beginning of this instance; otherwise, **false**.
+
+#### Examples
+
+```js
+"Lorem impus".startsWith("Lorem");  // true
+"Lorem impus".startsWith("LOREM");  // false
+"Lorem impus".startsWith("amet");   // false
+"Lorem impus".startsWith("");       // true
+"Lorem impus".startsWith(null);     // false
+"5 Lorem impus".startsWith(5);      // true
+"".startsWith("")                   // true
+```
+
+### 6. String.prototype.startsWithInsensitive()
+> The **startsWithInsensitive()** method determines whether the beginning of this string instance matches the specified string suffix.
+> The startsWithInsensitive() method is case insensitive.
+
+#### Syntax
+```js
+str.startsWithInsensitive(prefix);
+```
+
+#### Parameters
+* **prefix** - The string to compare to the substring at the beginning of this instance.
+
+#### Return Value
+**true** if value matches the beginning of this instance; otherwise, **false**.
+
+#### Examples
+
+```js
+"Lorem impus".startsWithInsensitive("Lorem");  // true
+"Lorem impus".startsWithInsensitive("LOREM");  // true
+"Lorem impus".startsWithInsensitive("amet");   // false
+"Lorem impus".startsWithInsensitive("");       // true
+"Lorem impus".startsWithInsensitive(null);     // false
+"5 Lorem impus".startsWithInsensitive(5);      // true
+"".startsWithInsensitive("")                   // true
+```
+
+
 ## Array extensions
 ### 1. Array.prototype.last()
 > The **last()** method returns the last element of the array, or undefined if the array is empty.
 
-### Syntax
+#### Syntax
 ```js
-var last = [1,2,3].last();
+array.last();
 ```
-### Examples
+#### Examples
 
 ```js
 [1,2,3].last();  // 3
@@ -200,11 +357,11 @@ var last = [1,2,3].last();
 ### 2. Array.prototype.first()
 > The **first()** method returns the first element of the array, or undefined if the array is empty.
 
-### Syntax
+#### Syntax
 ```js
-var first = [1,2,3].first();
+array.first();
 ```
-### Examples
+#### Examples
 
 ```js
 [1,2,3].first();  // 1

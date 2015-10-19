@@ -69,7 +69,11 @@
 
 	/*has tests*/
 	if (!String.prototype.endsWithInsensitive) {
-	    String.prototype.endsWithInsensitive = function(suffix) {	    	
+	    String.prototype.endsWithInsensitive = function(suffix) {	
+	    	if(!suffix || !suffix.isString()){
+	    		return this.toUpperCase().endsWith(suffix);
+	    	}    
+
 	        return this.toUpperCase().endsWith(suffix.toUpperCase());
 	    };
 	}
@@ -84,6 +88,10 @@
 	/*has tests*/
 	if (!String.prototype.startsWithInsensitive) {
 	    String.prototype.startsWithInsensitive = function(prefix) {
+	    	if(!prefix || !prefix.isString()){
+	    		return this.toUpperCase().startsWith(prefix);
+	    	}   
+	    	
 	        return this.toUpperCase().startsWith(prefix.toUpperCase());
 	    };
 	}
