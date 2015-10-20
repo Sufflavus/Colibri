@@ -45,7 +45,7 @@ describe("utils.getRandomInt", function() {
 		expect(actual).not.toBeLessThan(0);				
     });		
 
-    it("returns int that more than parameter when called with one parameter", function() {	
+    it("returns int that greater than parameter when called with one parameter", function() {	
     	var min = 5;			
 		var actual = Colibri.utils.getRandomInt(min);
 		
@@ -75,13 +75,24 @@ describe("utils.getRandomInt", function() {
 		expect(actual).not.toBeGreaterThan(max);		
     });	
 
-    it("throws an exception when the first parameter more then the second one", function() {	
+    it("returns correct int when called with 2 equal parameter", function() {	
+    	var min = 5;
+    	var max = 5;			
+
+		var actual = Colibri.utils.getRandomInt(min, max);
+		
+		expect(Number.isInteger(actual)).toBe(true);	
+		expect(actual).not.toBeLessThan(min);
+		expect(actual).not.toBeGreaterThan(max);		
+    });	
+
+    it("throws an exception when the first parameter greater then the second one", function() {	
     	var min = 15;
     	var max = -5;			
     	
     	expect(function() {
     		Colibri.utils.getRandomInt(min, max);
-    	}).toThrowError("First parameter should be less then the second one.");    			
+    	}).toThrowError("First parameter should be less or equal then the second one.");    			
     });	
 
     it("throws an exception the first parameter is not int", function() {	

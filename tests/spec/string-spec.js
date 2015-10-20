@@ -119,6 +119,16 @@ describe("String 'indexOfInsensitive'", function() {
 		
         expect(actual).toEqual(expectedIndex);
     });	
+
+    it("throws an exception if fromIndex is not integer", function() {	
+    	var source = "Lorem imsum ip";		
+		var searchValue = "imsum";		
+		var fromIndex = "ip";
+    	
+    	expect(function() {
+    		var actual = source.indexOfInsensitive(searchValue, fromIndex);
+    	}).toThrowError("Parameter fromIndex should be numbers.");    			
+    });	
 });
 
 describe("String 'endsWith'", function() {

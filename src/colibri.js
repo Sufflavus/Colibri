@@ -50,9 +50,11 @@
 	    		return -1;
 	    	}
 
-	    	// TODO: type of parameters
+	    	if(fromIndex && !Number.isInteger(fromIndex)){
+    			throw new Error("Parameter fromIndex should be numbers.");
+    		}
 
-	    	if(!searchValue.length){
+	    	if(!searchValue.isString()){
 	    		return this.indexOf(searchValue, fromIndex);
 	    	}
 
@@ -91,7 +93,7 @@
 	    	if(!prefix || !prefix.isString()){
 	    		return this.toUpperCase().startsWith(prefix);
 	    	}   
-	    	
+
 	        return this.toUpperCase().startsWith(prefix.toUpperCase());
 	    };
 	}
@@ -126,7 +128,14 @@
 	/*has tests*/
 	if (!Array.prototype.isEmpty) {
 		Array.prototype.isEmpty = function() {
-		    return this.length === 0;
+		    return !this.length;
+		};
+	}
+
+	/*has tests*/
+	if (!Array.prototype.isNotEmpty) {
+		Array.prototype.isNotEmpty = function() {
+		    return !!this.length;
 		};
 	}
 	
@@ -137,26 +146,34 @@
 	        	return item === 0 || !!item; 
 	        });	        
 	    };
-	}
+	}	
 
 	/*has tests*/
 	if (!Array.prototype.contains) {
-	    Array.prototype.contains = function (value) {
-	        return this.indexOf(value) >= 0;
+	    Array.prototype.contains = function (item) {
+	        return this.indexOf(item) >= 0;
 	    };
 	}
 
 	/*has tests*/
 	if (!Array.prototype.indexOfInsensitive) {
-	    Array.prototype.indexOfInsensitive = function (value) {
-	    	if(!value.isString()){
-	    		return this.indexOf(value);
+	    Array.prototype.indexOfInsensitive = function (searchElement, fromIndex) {
+	    	if(!this.length){
+	    		return -1;
+	    	}
+
+	    	if(fromIndex && !Number.isInteger(fromIndex)){
+    			throw new Error("Parameter fromIndex should be numbers.");
+    		}
+
+	    	if(!searchElement.isString()){
+	    		return this.indexOf(searchElement, fromIndex);
 	    	}
 
 	        var upperCaseArray = this.map(function (item) {
 	            return item.isString() ? item.toUpperCase() : item;
 	        });
-	        return upperCaseArray.indexOf(value.toUpperCase());
+	        return upperCaseArray.indexOf(searchElement.toUpperCase(), fromIndex);
 	    };
 	}
 
@@ -194,7 +211,7 @@
 	    };
 	}
 
-	Function.prototype.memoized = function () {
+	/*Function.prototype.memoized = function () {
 	    var key = JSON.stringify(Array.prototype.slice.call(arguments));
 	    this._values = this._values || {};
 	    return this._values[key] !== undefined ?
@@ -207,5 +224,5 @@
 	    return function () {
 	        return fn.memoized.apply(fn, arguments);
 	    };
-	};	
+	};*/	
 })();

@@ -107,46 +107,121 @@ describe("Array 'isEmpty'", function() {
 		
 		expect(actual).toBe(true);       
     });	
+
+    it("returns false for array with empty elements", function() {		
+		var array = [, , ];
+		
+		var actual = array.isEmpty();
+		
+		expect(actual).toBe(false);       
+    });	
+
+    it("returns false for array with 0", function() {		
+		var array = [0];
+		
+		var actual = array.isEmpty();
+		
+		expect(actual).toBe(false);       
+    });	
+
+    it("returns false for array with empty string", function() {		
+		var array = [""];
+		
+		var actual = array.isEmpty();
+		
+		expect(actual).toBe(false);       
+    });	
+
+    it("returns false for array with empty object", function() {		
+		var array = [{}];
+		
+		var actual = array.isEmpty();
+		
+		expect(actual).toBe(false);       
+    });	
+
+    it("returns false for array with empty array", function() {		
+		var array = [[]];
+		
+		var actual = array.isEmpty();
+		
+		expect(actual).toBe(false);       
+    });	
 });
 
-describe("Array 'contains'", function() {
+describe("Array 'isNotEmpty'", function() {
 	it("is a function of 'Array' prototype", function() {				
-		var actual = Array.prototype.contains instanceof Function;
+		var actual = Array.prototype.isNotEmpty instanceof Function;
 		expect(actual).toBe(true);
     });	
 	
 	it("is a function of '[]'", function() {				
-		var actual = [].contains instanceof Function;
+		var actual = [].isNotEmpty instanceof Function;
 		expect(actual).toBe(true);
     });	
 	
-    it("returns true for existing int element", function() {		
-		var array = [2, 0, ''];
-		var actual = array.contains(2);
+    it("returns true for array with more than one element", function() {		
+		var array = ['er', 2, 3];
+		var actual = array.isNotEmpty();
 		
 		expect(actual).toBe(true);
-    });	
-
-    it("returns true for existing empty string element", function() {		
-		var array = [2, 0, ''];
-		var actual = array.contains('');
-		
-		expect(actual).toBe(true);
-    });	
-
-    it("returns false for not existing element", function() {		
-		var array = [2, 0, ''];
-		var actual = array.contains(1);
-		
-		expect(actual).toBe(false);
     });
-
-    it("returns false for empty array", function() {		
+	
+	it("returns true for array with only one element", function() {
+		var array = ['f'];
+		
+		var actual = array.isNotEmpty();
+		
+		expect(actual).toBe(true);
+    });
+	
+	it("returns false for empty array", function() {		
 		var array = [];
-		var actual = array.contains(1);
 		
-		expect(actual).toBe(false);
-    });
+		var actual = array.isNotEmpty();
+		
+		expect(actual).toBe(false);       
+    });	
+
+    it("returns true for array with empty elements", function() {		
+		var array = [, , ];
+		
+		var actual = array.isNotEmpty();
+		
+		expect(actual).toBe(true);       
+    });	
+
+    it("returns true for array with 0", function() {		
+		var array = [0];
+		
+		var actual = array.isNotEmpty();
+		
+		expect(actual).toBe(true);       
+    });	
+
+    it("returns true for array with empty string", function() {		
+		var array = [""];
+		
+		var actual = array.isNotEmpty();
+		
+		expect(actual).toBe(true);       
+    });	
+
+    it("returns true for array with empty object", function() {		
+		var array = [{}];
+		
+		var actual = array.isNotEmpty();
+		
+		expect(actual).toBe(true);       
+    });	
+
+    it("returns true for array with empty array", function() {		
+		var array = [[]];
+		
+		var actual = array.isNotEmpty();
+		
+		expect(actual).toBe(true);       
+    });	
 });
 
 describe("Array 'removeEmpty'", function() {
@@ -236,7 +311,29 @@ describe("Array 'removeEmpty'", function() {
 		
 		expect(actual.length).toEqual(countOfNotEmptyElements);		
 		expect(actual[0]).toEqual(arrayElement1);		
-    });	
+    });	    
+
+    it("does not remove 0", function() {		
+    	var arrayElement1 = 0;		
+		var array = [arrayElement1];
+		var countOfNotEmptyElements = 1;
+
+		var actual = array.removeEmpty();
+		
+		expect(actual.length).toEqual(countOfNotEmptyElements);		
+		expect(actual[0]).toEqual(arrayElement1);		
+    });	   
+
+    it("does not remove empty array", function() {		
+    	var arrayElement1 = [];		
+		var array = [arrayElement1];
+		var countOfNotEmptyElements = 1;
+
+		var actual = array.removeEmpty();
+		
+		expect(actual.length).toEqual(countOfNotEmptyElements);		
+		expect(actual[0]).toEqual(arrayElement1);		
+    });	 
 
     it("works correct on empty arrays", function() {	    	
 		var array = [];
@@ -246,6 +343,81 @@ describe("Array 'removeEmpty'", function() {
 		
 		expect(actual.length).toEqual(countOfNotEmptyElements);					
     });	
+});
+
+describe("Array 'contains'", function() {
+	it("is a function of 'Array' prototype", function() {				
+		var actual = Array.prototype.contains instanceof Function;
+		expect(actual).toBe(true);
+    });	
+	
+	it("is a function of '[]'", function() {				
+		var actual = [].contains instanceof Function;
+		expect(actual).toBe(true);
+    });	
+	
+    it("returns true for existing int element", function() {		
+		var array = [2, 0, ''];
+		var actual = array.contains(2);
+		
+		expect(actual).toBe(true);
+    });	
+
+    it("returns true for existing empty string element", function() {		
+		var array = [2, 0, ''];
+		var actual = array.contains('');
+		
+		expect(actual).toBe(true);
+    });	
+
+    it("returns true for existing zero element", function() {		
+		var array = [2, 0, ''];
+		var actual = array.contains(0);
+		
+		expect(actual).toBe(true);
+    });	
+
+    it("returns false for nonexistent element", function() {		
+		var array = [2, 0, ''];
+		var actual = array.contains(1);
+		
+		expect(actual).toBe(false);
+    });
+
+    it("returns false for empty array", function() {		
+		var array = [];
+		var actual = array.contains(1);
+		
+		expect(actual).toBe(false);
+    });
+
+    it("returns false for nonexistent null element", function() {		
+		var array = [2, 0];
+		var actual = array.contains(null);
+		
+		expect(actual).toBe(false);
+    });
+
+    it("returns true for existing null element", function() {		
+		var array = [2, 0, null];
+		var actual = array.contains(null);
+		
+		expect(actual).toBe(true);
+    });
+
+    it("returns false for nonexistent undefined element", function() {		
+		var array = [2, 0];
+		var actual = array.contains(undefined);
+		
+		expect(actual).toBe(false);
+    });
+
+    it("returns true for existing undefined element", function() {		
+		var array = [2, 0, undefined];
+		var actual = array.contains(undefined);
+		
+		expect(actual).toBe(true);
+    });
 });
 
 describe("Array 'indexOfInsensitive'", function() {
@@ -261,61 +433,83 @@ describe("Array 'indexOfInsensitive'", function() {
 	
     it("returns correct index for existing string element", function() {
     	var element = "LoReM";
-		var elementForSearch = "lorem";
+		var searchElement = "lorem";
 		var array = [1, 2, element, "ert"];
 		var indexOfElement = 2;
 		
-		var actual = array.indexOfInsensitive(elementForSearch);
+		var actual = array.indexOfInsensitive(searchElement);
 		
         expect(actual).toEqual(indexOfElement);
     });	
 
-    it("returns -1 for non-existing element", function() {
+    it("returns -1 for nonexistent element", function() {
     	var element = "impus";
-		var elementForSearch = "lorem";
+		var searchElement = "lorem";
 		var array = [1, 2, element, "ert"];		
 		
-		var actual = array.indexOfInsensitive(elementForSearch);
+		var actual = array.indexOfInsensitive(searchElement);
 		
         expect(actual).toEqual(-1);
     });	
 
     it("returns -1 for empty array", function() {    	
-		var elementForSearch = "lorem";
+		var searchElement = "lorem";
 		var array = [];		
 		
-		var actual = array.indexOfInsensitive(elementForSearch);
+		var actual = array.indexOfInsensitive(searchElement);
 		
         expect(actual).toEqual(-1);
     });	
 
-    it("returns -1 for not existing string element", function() {    	
-		var elementForSearch = "lorem";
+    it("returns -1 for nonexistent string element", function() {    	
+		var searchElement = "lorem";
 		var array = [1, "impus", 2, ];		
 		
-		var actual = array.indexOfInsensitive(elementForSearch);
+		var actual = array.indexOfInsensitive(searchElement);
 		
         expect(actual).toEqual(-1);
     });	
 
     it("returns correct index for existing non-string element", function() {
     	var element = 3;
-		var elementForSearch = 3;
+		var searchElement = 3;
 		var array = [1, 2, element, "ert"];
 		var indexOfElement = 2;
 		
-		var actual = array.indexOfInsensitive(elementForSearch);
+		var actual = array.indexOfInsensitive(searchElement);
 		
         expect(actual).toEqual(indexOfElement);
     });	
 
-    it("returns -1 for not existing non-string element", function() {    	
-		var elementForSearch = 5;
+    it("returns -1 for nonexistent non-string element", function() {    	
+		var searchElement = 5;
 		var array = [1, 2];		
 		
-		var actual = array.indexOfInsensitive(elementForSearch);
+		var actual = array.indexOfInsensitive(searchElement);
 		
         expect(actual).toEqual(-1);
+    });	
+
+    it("throws an exception if fromIndex is not integer", function() {	
+    	var searchElement = 5;
+		var array = [1, 2];		
+		var fromIndex = "a";
+    	
+    	expect(function() {
+    		var actual = array.indexOfInsensitive(searchElement, fromIndex);
+    	}).toThrowError("Parameter fromIndex should be numbers.");    			
+    });	
+
+    it("returns correct index for correct fromIndex", function() {
+    	var element = 3;
+    	var array = [1, 2, element, "ert"];		
+		var searchElement = 3;
+		var indexOfElement = 2;
+		var fromIndex = 2;				
+		
+		var actual = array.indexOfInsensitive(searchElement, fromIndex);
+		
+        expect(actual).toEqual(indexOfElement);
     });	
 });
 

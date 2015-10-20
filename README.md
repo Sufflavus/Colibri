@@ -18,7 +18,7 @@ JavaScript custom Extensions and helpful functions
 
 ## List of extensions (colibri.js)
 
-### *Object extensions*
+### *[Object extensions](#object)*
 1. Object.prototype.isArray()
 2. Object.prototype.isString()
 3. Object.prototype.clone()
@@ -42,17 +42,18 @@ JavaScript custom Extensions and helpful functions
 1. Array.prototype.last()
 2. Array.prototype.first()
 3. Array.prototype.isEmpty()
-4. Array.prototype.removeEmpty()
-5. Array.prototype.contains()
-6. Array.prototype.indexOfInsensitive()
-7. Array.prototype.max()
-8. Array.prototype.min()
+4. Array.prototype.isNotEmpty()
+5. Array.prototype.removeEmpty()
+6. Array.prototype.contains()
+7. Array.prototype.indexOfInsensitive()
+8. Array.prototype.max()
+9. Array.prototype.min()
 
 ## Colibri.utils functions (colibri-utils.js)
 1. Colibri.utils.createGuid()
 2. Colibri.utils.getRandomInt(min, max)
 
-## Object extensions
+## <a name="object"></a>Object extensions
 ### 1. Object.prototype.isArray()
 > The **isArray()** method determines whether the tested object is Array.
 
@@ -337,6 +338,26 @@ str.startsWithInsensitive(prefix);
 "".startsWithInsensitive("")                   // true
 ```
 
+## Date extensions
+### 1. Date.prototype.addDays()
+> The **addDays()** method adds specified number of days to current value.
+
+#### Syntax
+```js
+date.addDays(5);
+```
+
+#### Parameters
+* **daysCount** - The number of days (int) to be added.
+
+#### Return Value
+The new date with added number of days.
+
+```js
+(new Date()).addDays(1);    // tomorrow
+(new Date()).addDays(-1);   // yesterday
+(new Date()).addDays("1");  // Error
+```
 
 ## Array extensions
 ### 1. Array.prototype.last()
@@ -346,6 +367,10 @@ str.startsWithInsensitive(prefix);
 ```js
 array.last();
 ```
+
+#### Return Value
+The last element of the array, or undefined if the array is empty.
+
 #### Examples
 
 ```js
@@ -361,13 +386,132 @@ array.last();
 ```js
 array.first();
 ```
+
+#### Return Value
+The first element of the array, or undefined if the array is empty.
+
 #### Examples
 
 ```js
 [1,2,3].first();  // 1
-["a"].last();     // "a"
-[].last();        // undefined
+["a"].first();    // "a"
+[].first();       // undefined
 ```
+
+### 3. Array.prototype.isEmpty()
+> The **isEmpty()** method determines whether the array does not contain any element.
+
+#### Syntax
+```js
+array.isEmpty();
+```
+
+#### Return Value
+**true** if the array does not contain any element; otherwise, **false**.
+
+#### Examples
+
+```js
+[1,2,3].isEmpty();  // false
+[].first();         // true
+[, , ].isEmpty();   // false
+[""].isEmpty();     // false
+```
+
+### 4. Array.prototype.isNotEmpty()
+> The **isNotEmpty()** method determines whether the array contains at least one element.
+
+#### Syntax
+```js
+array.isNotEmpty();
+```
+
+#### Return Value
+**true** if the array contains at least one element; otherwise, **false**.
+
+#### Examples
+
+```js
+[1,2,3].isNotEmpty();    // true
+["lorem"].isNotEmpty();  // true
+[].isNotEmpty();         // false
+[, , ].isNotEmpty();     // false
+```
+
+### 5. Array.prototype.removeEmpty()
+> The **removeEmpty()** method removes empty elements (null, NaN, undefined, "") from an array.
+
+#### Syntax
+```js
+array.removeEmpty();
+```
+
+#### Return Value
+The array that remains after all empty elements are removed from the current array.
+
+#### Examples
+
+```js
+[, , ].removeEmpty();                  // []
+[, 1, null, undefined].removeEmpty();  // [1]
+[1, 2, 3].removeEmpty();               // [1, 2, 3]
+["", {}, 0].removeEmpty();             // [{}, 0]
+```
+
+### 6. Array.prototype.contains()
+> The **contains()** method determines whether an element is in the array.
+
+#### Syntax
+```js
+array.contains(item);
+```
+
+#### Parameters
+* **item** - The object to locate in the array.
+
+#### Return Value
+**true** if item is found in the array; otherwise, **false**.
+
+#### Examples
+
+```js
+[2, 0, ''].contains(0);                // true
+[2, 0, null].contains(null);           // true
+["lorem", "impus"].contains("lorem");  // true
+["lorem", "impus"].contains(1);        // false
+```
+
+### 7. Array.prototype.indexOfInsensitive()
+> The **indexOfInsensitive()** method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+> The indexOfInsensitive() method is case insensitive.
+
+#### Syntax
+```js
+array.indexOf(searchElement[, fromIndex = 0])
+```
+
+#### Parameters
+* **searchElement** - Element to locate in the array.
+* **fromIndex** - (optional) The index to start the search at. It can be any integer. The default value is 0. If fromIndex < 0, it is taken as the offset from the end of the array. If fromIndex >= array.length, the method will return -1.
+
+_For more information visit [developer.mozilla.org](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)_
+
+#### Return Value
+The zero-based **index** position of searchElement if that searchElement is found, or **-1** if it is not.
+
+#### Examples
+
+```js
+var array = ["Lorem", "impus", 5];
+array.indexOfInsensitive("impus");  // 1
+array.indexOfInsensitive("LoReM");  // 0
+array.indexOfInsensitive("a");      // -1
+array.indexOfInsensitive(5, 2);     // 2
+
+```
+
 
 ## LICENSE
 [The MIT License](https://github.com/Sufflavus/Colibri/blob/master/LICENSE)
+
+//http://stackoverflow.com/questions/6695439/how-do-you-create-link-to-a-named-anchor-in-multimarkdown

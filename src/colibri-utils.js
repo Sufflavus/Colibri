@@ -33,7 +33,7 @@ Colibri.utils = (function(){
       max = Number.isInteger(max) ? max : Number.MAX_VALUE;
 
       if(min > max){
-        throw new Error("First parameter should be less then the second one.");
+        throw new Error("First parameter should be less or equal then the second one.");
       }
 
       return Math.floor(Math.random() * (max - min + 1)) + min;
