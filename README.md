@@ -23,11 +23,11 @@ JavaScript custom Extensions and helpful functions
 2. Object.prototype.isString()
 3. Object.prototype.clone()
 
-### *Number extensions*
+### *[Number extensions](#number)*
 1. Number.isInteger()
 2. Number.isFloat()
 
-### *String extensions*
+### *[String extensions](#string)*
 1. String.prototype.trim()
 2. String.prototype.indexOfInsensitive()
 3. String.prototype.endsWith()
@@ -35,10 +35,10 @@ JavaScript custom Extensions and helpful functions
 5. String.prototype.startsWith()
 6. String.prototype.startsWithInsensitive()
 
-### *Date extensions*
+### *[Date extensions](#date)*
 1. Date.prototype.addDays()
 
-### *Array extensions*
+### *[Array extensions](#array)*
 1. Array.prototype.last()
 2. Array.prototype.first()
 3. Array.prototype.isEmpty()
@@ -122,7 +122,7 @@ value = "Lorem";
 clone = value.clone();     // "Lorem"
 ```
 
-## Number extensions
+## <a name="number"></a>Number extensions
 ### 1. Number.isInteger()
 > The **isInteger()** method determines whether the passed value is an integer.
 
@@ -178,7 +178,7 @@ Number.isFloat(0);        // true
 Number.isFloat("10");     // false
 ```
 
-## String extensions
+## <a name="string"></a>String extensions
 ### 1. String.prototype.trim()
 > The **trim()** method removes spaces from the beginning and the ending of the string but not from the middle of the string.
 
@@ -338,7 +338,7 @@ str.startsWithInsensitive(prefix);
 "".startsWithInsensitive("")                   // true
 ```
 
-## Date extensions
+## <a name="date"></a>Date extensions
 ### 1. Date.prototype.addDays()
 > The **addDays()** method adds specified number of days to current value.
 
@@ -359,7 +359,7 @@ The new date with added number of days.
 (new Date()).addDays("1");  // Error
 ```
 
-## Array extensions
+## <a name="array"></a>Array extensions
 ### 1. Array.prototype.last()
 > The **last()** method returns the last element of the array, or undefined if the array is empty.
 
@@ -513,5 +513,3 @@ array.indexOfInsensitive(5, 2);     // 2
 
 ## LICENSE
 [The MIT License](https://github.com/Sufflavus/Colibri/blob/master/LICENSE)
-
-//http://stackoverflow.com/questions/6695439/how-do-you-create-link-to-a-named-anchor-in-multimarkdown
