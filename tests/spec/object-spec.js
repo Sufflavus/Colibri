@@ -46,6 +46,60 @@ describe("Object 'isArray'", function() {
     });	
 });
 
+describe("Object 'isFunction'", function() {
+	it("is a function of 'Object' prototype", function() {				
+		var actual = Object.prototype.isFunction instanceof Function;
+		expect(actual).toBe(true);
+    });	
+
+    it("returns true for function", function() {	
+		var testedFunction = function(){};
+		var actual = testedFunction.isFunction();		
+		expect(actual).toBe(true);
+    });	
+
+    it("returns true for function", function() {	
+		function testedFunction(){};
+		var actual = testedFunction.isFunction();		
+		expect(actual).toBe(true);
+    });	
+		
+	it("returns false for array", function() {		
+		var testedArray = [1, 2];
+		var actual = testedArray.isFunction();		
+		expect(actual).toBe(false);
+    });
+		
+    it("returns false for string", function() {		
+		var actual = "test".isFunction();		
+		expect(actual).toBe(false);
+    });
+
+    it("returns false for int", function() {
+    	var testedValue = 12;		
+		var actual = testedValue.isFunction();		
+		expect(actual).toBe(false);
+    });
+
+    it("returns false for float", function() {
+    	var testedValue = 12.56;		
+		var actual = testedValue.isFunction();		
+		expect(actual).toBe(false);
+    });
+
+    it("returns false for object", function() {
+    	var testedValue = {a: 1};		
+		var actual = testedValue.isFunction();		
+		expect(actual).toBe(false);
+    });
+
+    it("returns false for Date", function() {
+    	var testedValue = new Date();		
+		var actual = testedValue.isFunction();		
+		expect(actual).toBe(false);
+    });	
+});
+
 describe("Object 'isString'", function() {
 	it("is a function of 'Object' prototype", function() {				
 		var actual = Object.prototype.isString instanceof Function;

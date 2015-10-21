@@ -39,6 +39,46 @@ Colibri.utils = (function(){
       return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  /**
+   * Returns the first item of an array that matched the predicate function (has tests)
+   * @param {Array} array 
+   * @param {function} predicate
+   * @return {object} the first item of an array that matched the predicate function. 
+   */
+  function arrayFirst(array, predicate) {
+    if(!array || !array.isArray()){
+      throw new Error("First parameter should be array.");
+    }
+
+    if(!predicate || !predicate.isFunction()){
+      throw new Error("Second parameter should be a function.");
+    }
+
+    for (var i = 0, j = array.length; i < j; i++){
+      if (predicate(array[i])) {
+          return array[i];
+        }
+      }
+
+    return null;
+  }
+
+  /**
+   * Removes first accurance of item from an array. (has tests)
+   * @param {Array} array 
+   * @param {object} itemToRemove 
+   */
+  function arrayRemoveItem(array, itemToRemove) {
+    if(!array || !array.isArray()){
+      throw new Error("First parameter should be array.");
+    }
+
+    var index = array.indexOf(itemToRemove);
+    if (index >= 0) {
+      array.splice(index, 1);
+    }    
+  }   
+
   function generateSymbolsQuartet() {
       return Math.floor((1 + Math.random()) * 0x10000)
                  .toString(16)
@@ -47,7 +87,9 @@ Colibri.utils = (function(){
 
   return {
     createGuid: createGuid,
-    getRandomInt: getRandomInt
+    getRandomInt: getRandomInt,
+    arrayFirst: arrayFirst,
+    arrayRemoveItem: arrayRemoveItem
   }
 })();
 

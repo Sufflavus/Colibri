@@ -525,7 +525,7 @@ describe("Array 'max'", function() {
     });	
 	
     it("returns correct result for array of numbers", function() {
-    	var maxElement = 1000;		
+    	var maxElement = 1000.23;		
 		var array = [1, 2, maxElement, 23.56];
 				
 		var actual = array.max();
@@ -540,10 +540,10 @@ describe("Array 'max'", function() {
     });	
 
     it("throws an exception for array with non-number elements", function() {	
-    	var array = [1, 2, "3"];		
+    	var array = [1, 2, "ert"];		
     	
     	expect(function() {
-    		var actual = array.max();		
+    		var actual = array.max();	    		
     	}).toThrowError("All items in array should be numbers.");    			
     });	
 });

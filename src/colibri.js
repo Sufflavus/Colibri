@@ -14,6 +14,13 @@
 	}
 
 	/*has tests*/
+	if (!Object.prototype.isFunction) {
+		Object.prototype.isFunction = function() {
+			return Object.prototype.toString.call(this) === "[object Function]";
+		};
+	}
+
+	/*has tests*/
 	if (!Object.prototype.clone) {
 		Object.prototype.clone = function() {
 			return JSON.parse(JSON.stringify(this));
@@ -65,6 +72,7 @@
 	/*has tests*/
 	if (!String.prototype.endsWith) {
 	    String.prototype.endsWith = function(suffix) {
+	    	suffix = "" + suffix; // fix for IE
 	    	return this.indexOf(suffix, this.length - suffix.length) !== -1;
 	    };
 	}

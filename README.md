@@ -21,7 +21,8 @@ JavaScript custom Extensions and helpful functions
 ### *[Object extensions](#object)*
 1. Object.prototype.isArray()
 2. Object.prototype.isString()
-3. Object.prototype.clone()
+3. Object.prototype.isFunction()
+4. Object.prototype.clone()
 
 ### *[Number extensions](#number)*
 1. Number.isInteger()
@@ -49,10 +50,13 @@ JavaScript custom Extensions and helpful functions
 8. Array.prototype.max()
 9. Array.prototype.min()
 
-## Colibri.utils functions (colibri-utils.js)
+## List of Colibri.utils functions (colibri-utils.js)
 1. Colibri.utils.createGuid()
 2. Colibri.utils.getRandomInt(min, max)
+3. Colibri.utils.arrayFirst(array, predicate)
+4. Colibri.utils.arrayRemoveItem(array, itemToRemove)
 
+## Extensions (colibri.js)
 ## <a name="object"></a>Object extensions
 ### 1. Object.prototype.isArray()
 > The **isArray()** method determines whether the tested object is Array.
@@ -91,7 +95,28 @@ object.isString();
 [1,2,3].isString();  // false
 ```
 
-### 3. Object.prototype.clone()
+### 3. Object.prototype.isFunction()
+> The **isFunction()** method determines whether the tested object is Function.
+
+#### Syntax
+```js
+object.isFunction();
+```
+
+#### Return Value
+**true** if the tested object is Function; otherwise, **false**.
+
+#### Examples
+
+```js
+function test(){}
+test.isFunction();     // true
+"a".isFunction();      // false
+"".isFunction();       // false
+[1,2,3].isFunction();  // false
+```
+
+### 4. Object.prototype.clone()
 > The **clone()** method returns a clone of the object (only data fields, not function).
 
 #### Syntax
@@ -510,6 +535,144 @@ array.indexOfInsensitive(5, 2);     // 2
 
 ```
 
+### 8. Array.prototype.max()
+> The **max()** method finds the maximum element in a numeric array.
+> The max() method works only if all the elements in array are float numbers.
+
+#### Syntax
+```js
+array.max()
+```
+
+_For more information visit [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max)_
+
+#### Return Value
+The largest one element of the array or **undefined** if array is empty.
+
+#### Examples
+
+```js
+[1, 3, 8].max();        // 8
+[].max();               // undefined
+["Lorem", 1, 5].max();  // error
+```
+
+### 9. Array.prototype.min()
+> The **min()** method finds the minimum element in a numeric array.
+> The min() method works only if all the elements in array are float numbers.
+
+#### Syntax
+```js
+array.min()
+```
+
+_For more information visit [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min)_
+
+#### Return Value
+The smalest one element of the array or **undefined** if array is empty.
+
+#### Examples
+
+```js
+[1, -3, 8].min();       // -3
+[].min();               // undefined
+["Lorem", 1, 5].min();  // error
+```
+
+## Colibri.utils functions (colibri-utils.js)
+### 1. Colibri.utils.createGuid()
+> The **createGuid()** method generates new random Guid.
+
+#### Syntax
+```js
+var guid = Colibri.utils.createGuid();
+```
+
+#### Return Value
+New random **Guid** (string).
+
+#### Examples
+
+```js
+Colibri.utils.createGuid();  // "0ef73963-bea8-ebf9-af71-897958421e2e"
+```
+
+### 2. Colibri.utils.getRandomInt()
+> The **getRandomInt()** method returns a random number within a specified range.
+
+#### Syntax
+```js
+avar randon = Colibri.utils.getRandomInt([min[, max]]);
+```
+
+#### Parameters
+* **min** - (int, optional) The inclusive lower bound of the random number returned. Default value is 0.
+* **max** - (int, optional) The exclusive upper bound of the random number returned. Max must be greater than or equal to min. Default value is Number.MAX_VALUE.
+
+#### Return Value
+A signed integer greater than or equal to min and less or equal than max; that is, the range of return values includes min and max. If min equals max, min is returned. 
+
+#### Examples
+
+```js
+Colibri.utils.getRandomInt(1, 8);  // 6
+Colibri.utils.getRandomInt(1);     // 1.794066025907234e+308
+Colibri.utils.getRandomInt();      // 1.0024528559121937e+308
+Colibri.utils.getRandomInt("12");  // Error
+
+```
+
+### 3. Colibri.utils.arrayFirst()
+> The **arrayFirst()** method returns the first item of an array that is matched the predicate function.
+
+#### Syntax
+```js
+avar first = Colibri.utils.arrayFirst(array, predicate);
+```
+
+#### Parameters
+* **array** - array in which item is searching.
+* **predicate** - (function) function that returns true for searching item.
+
+#### Return Value
+The first item of an array that is matched the predicate function; null if item is not found.
+
+#### Examples
+
+```js
+
+var array = [1, 3, 8];			
+var first = Colibri.utils.arrayFirst(array, function (item){
+	return item > 2;
+});
+// first equal 3
+
+first = Colibri.utils.arrayFirst(array, function (item){
+	return item > 10;
+});
+// first is null
+
+```
+
+### 4. Colibri.utils.arrayRemoveItem()
+> The **arrayRemoveItem()** Removes first accurance of item from an array.
+> The arrayRemoveItem() method removes item from array that is passed as first parameter.
+
+#### Syntax
+```js
+Colibri.utils.arrayRemoveItem(array, itemToRemove);
+```
+
+#### Parameters
+* **array** - array in which item is searching.
+* **itemToRemove** - (object) item of array that should be removed.
+
+#### Examples
+
+```js
+var array = [1, 3, 8];		
+Colibri.utils.arrayRemoveItem(array, 3); // array == [1, 8]
+```
 
 ## LICENSE
 [The MIT License](https://github.com/Sufflavus/Colibri/blob/master/LICENSE)
