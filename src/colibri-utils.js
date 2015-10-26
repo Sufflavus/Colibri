@@ -79,6 +79,30 @@ Colibri.utils = (function(){
     }    
   }   
 
+  /**
+   * Executes a provided function once per dictionary element. (has tests)
+   * @param {Object} dictionary. Example: dicr = {a: 1, b: 2}
+   * @param {function} callback 
+   */
+  function dictionaryForEach(dictionary, callback){
+    if (!dictionary) {
+      throw new Error("First parameter should be defined.");
+    }
+
+    if(!callback || !callback.isFunction()){
+      throw new Error("Second parameter should be a function.");
+    }
+
+    for (var key in dictionary) {
+      if (!dictionary.hasOwnProperty(key)) { 
+        continue; 
+      }
+
+      var value = dictionary[key];
+      callback(key, value);
+    }
+  }
+
   function generateSymbolsQuartet() {
       return Math.floor((1 + Math.random()) * 0x10000)
                  .toString(16)
@@ -89,7 +113,8 @@ Colibri.utils = (function(){
     createGuid: createGuid,
     getRandomInt: getRandomInt,
     arrayFirst: arrayFirst,
-    arrayRemoveItem: arrayRemoveItem
+    arrayRemoveItem: arrayRemoveItem,
+    dictionaryForEach: dictionaryForEach
   }
 })();
 

@@ -23,6 +23,11 @@ describe("utils", function() {
 		var actual = Colibri.utils.arrayRemoveItem instanceof Function;
 		expect(actual).toBe(true);
     });	
+
+    it("has function dictionaryForEach", function() {     
+        var actual = Colibri.utils.dictionaryForEach instanceof Function;
+        expect(actual).toBe(true);
+    }); 
 });
 
 describe("utils.createGuid", function() {
@@ -290,4 +295,90 @@ describe("utils.arrayRemoveItem", function() {
 	    	Colibri.utils.arrayRemoveItem(array);
     	}).toThrowError("First parameter should be array.");    			
     });	    
+});
+
+describe("utils.dictionaryForEach", function() {
+    it("executes a provided function once per dictionary element 1", function() {         
+        var dictionary = { a: 1, b: 2 };
+        var dictionaryItemsCount = 2;
+        var counter = 0;
+        var keys = [];
+        var values = [];
+
+        var callback = function(key, value){
+            counter++;
+            keys.push(key);
+            values.push(value);
+        }
+
+        Colibri.utils.dictionaryForEach(dictionary, callback);
+                
+        expect(counter).toEqual(dictionaryItemsCount);      
+        expect(keys.length).toEqual(dictionaryItemsCount);    
+        expect(values.length).toEqual(dictionaryItemsCount); 
+        expect(keys[0]).toEqual("a");  
+        expect(keys[1]).toEqual("b");  
+    }); 
+
+    it("executes a provided function once per dictionary element 1", function() {         
+        var dictionary = { };
+        var dictionaryItemsCount = 0;
+        var counter = 0;
+        var keys = [];
+        var values = [];
+
+        var callback = function(key, value){
+            counter++;
+            keys.push(key);
+            values.push(value);
+        }
+
+        Colibri.utils.dictionaryForEach(dictionary, callback);
+                
+        expect(counter).toEqual(dictionaryItemsCount);      
+        expect(keys.length).toEqual(dictionaryItemsCount);    
+        expect(values.length).toEqual(dictionaryItemsCount);         
+    }); 
+
+    it("throws an exception when the first parameter is null", function() {                           
+        expect(function() {
+            Colibri.utils.dictionaryForEach(null, function(){});
+        }).toThrowError("First parameter should be defined.");                
+    }); 
+
+    it("throws an exception when the first parameter is undefined", function() {  
+        expect(function() {
+            Colibri.utils.dictionaryForEach(undefined, function(){});
+        }).toThrowError("First parameter should be defined.");                  
+    });     
+
+    it("throws an exception when the second parameter is null", function() { 
+        expect(function() {
+            Colibri.utils.dictionaryForEach({}, null);
+        }).toThrowError("Second parameter should be a function.");                     
+    });     
+
+    it("throws an exception when the second parameter is undefined", function() { 
+        expect(function() {
+            Colibri.utils.dictionaryForEach({}, undefined);
+        }).toThrowError("Second parameter should be a function.");                     
+    });    
+
+    it("throws an exception when the second parameter is int", function() { 
+        expect(function() {
+            Colibri.utils.dictionaryForEach({}, 1);
+        }).toThrowError("Second parameter should be a function.");                     
+    });   
+
+    it("throws an exception when the second parameter is string", function() { 
+        expect(function() {
+            Colibri.utils.dictionaryForEach({}, "a");
+        }).toThrowError("Second parameter should be a function.");                     
+    });   
+
+    it("throws an exception when the second parameter is array", function() { 
+        expect(function() {
+            Colibri.utils.dictionaryForEach({}, [1, 2]);
+        }).toThrowError("Second parameter should be a function.");                     
+    });   
 });

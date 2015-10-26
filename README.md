@@ -55,6 +55,7 @@ JavaScript custom Extensions and helpful functions
 2. Colibri.utils.getRandomInt(min, max)
 3. Colibri.utils.arrayFirst(array, predicate)
 4. Colibri.utils.arrayRemoveItem(array, itemToRemove)
+5. Colibri.utils.dictionaryForEach(dictionary, callback)
 
 ## Extensions (colibri.js)
 ## <a name="object"></a>Object extensions
@@ -655,7 +656,7 @@ first = Colibri.utils.arrayFirst(array, function (item){
 ```
 
 ### 4. Colibri.utils.arrayRemoveItem()
-> The **arrayRemoveItem()** Removes first accurance of item from an array.
+> The **arrayRemoveItem()** method removes first accurance of item from an array.
 > The arrayRemoveItem() method removes item from array that is passed as first parameter.
 
 #### Syntax
@@ -672,6 +673,32 @@ Colibri.utils.arrayRemoveItem(array, itemToRemove);
 ```js
 var array = [1, 3, 8];		
 Colibri.utils.arrayRemoveItem(array, 3); // array == [1, 8]
+```
+
+### 5. Colibri.utils.dictionaryForEach()
+> The **dictionaryForEach()** method executes a provided function once per dictionary element.
+> The dictionaryForEach() method executes only for own properties of an object.
+
+#### Parameters
+* **dictionary** - object that structured like a dictionary, for example, {a: 1, b: 2}.
+* **callback** - function to execute for each element, taking two arguments: **key** - the current element's key being processed in the dictionary, and **value** - the current element's value.
+
+#### Examples
+
+```js
+var dict = {a: 1, b: 2};
+
+function logDictionaryElements(key, value) {
+  console.log("key = " + key + "; value = " + value);
+}
+
+Colibri.utils.dictionaryForEach(dict, logDictionaryElements);
+
+// logs:
+// key = a; value = 1
+// key = b; value = 2
+
+
 ```
 
 ## LICENSE
