@@ -1,3 +1,7 @@
+// JavaScript helpful functions
+// @author Sufflavus https://github.com/Sufflavus
+// @version 1.1.0 
+
 // required colibri.js
 var Colibri = {};
 Colibri.utils = (function(){

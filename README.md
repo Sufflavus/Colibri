@@ -681,7 +681,9 @@ Colibri.utils.arrayRemoveItem(array, 3); // array == [1, 8]
 
 #### Parameters
 * **dictionary** - object that structured like a dictionary, for example, {a: 1, b: 2}.
-* **callback** - function to execute for each element, taking two arguments: **key** - the current element's key being processed in the dictionary, and **value** - the current element's value.
+* **callback** - function to execute for each element, taking two arguments: 
+  * **key** - the current element's key being processed in the dictionary, and 
+  * **value** - the current element's value.
 
 #### Examples
 

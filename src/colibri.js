@@ -1,3 +1,7 @@
+// JavaScript custom Extensions
+// @author Sufflavus https://github.com/Sufflavus
+// @version 1.1.0 
+
 (function(){
 	/*has tests*/
 	if (!Object.prototype.isArray) {
