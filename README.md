@@ -1,9 +1,8 @@
 # Colibri
-JavaScript custom Extensions and helpful functions
+JavaScript custom Extensions
 
 ## Setup & Dependencies
-1. colibri.js (does not have any dependencies)
-2. colibri-utils.js (depends on colibri.js)
+colibri.js does not have any dependencies
 
 ```html
 <head>
@@ -16,7 +15,7 @@ JavaScript custom Extensions and helpful functions
 </body>
 ```
 
-## List of extensions (colibri.js)
+## List of extensions
 
 ### *[Object extensions](#object)*
 1. Object.prototype.isArray()
@@ -50,14 +49,6 @@ JavaScript custom Extensions and helpful functions
 8. Array.prototype.max()
 9. Array.prototype.min()
 
-## List of Colibri.utils functions (colibri-utils.js)
-1. Colibri.utils.createGuid()
-2. Colibri.utils.getRandomInt(min, max)
-3. Colibri.utils.arrayFirst(array, predicate)
-4. Colibri.utils.arrayRemoveItem(array, itemToRemove)
-5. Colibri.utils.dictionaryForEach(dictionary, callback)
-
-## Extensions (colibri.js)
 ## <a name="object"></a>Object extensions
 ### 1. Object.prototype.isArray()
 > The **isArray()** method determines whether the tested object is Array.
@@ -578,129 +569,6 @@ The smalest one element of the array or **undefined** if array is empty.
 [1, -3, 8].min();       // -3
 [].min();               // undefined
 ["Lorem", 1, 5].min();  // error
-```
-
-## Colibri.utils functions (colibri-utils.js)
-### 1. Colibri.utils.createGuid()
-> The **createGuid()** method generates new random Guid.
-
-#### Syntax
-```js
-var guid = Colibri.utils.createGuid();
-```
-
-#### Return Value
-New random **Guid** (string).
-
-#### Examples
-
-```js
-Colibri.utils.createGuid();  // "0ef73963-bea8-ebf9-af71-897958421e2e"
-```
-
-### 2. Colibri.utils.getRandomInt()
-> The **getRandomInt()** method returns a random number within a specified range.
-
-#### Syntax
-```js
-avar randon = Colibri.utils.getRandomInt([min[, max]]);
-```
-
-#### Parameters
-* **min** - (int, optional) The inclusive lower bound of the random number returned. Default value is 0.
-* **max** - (int, optional) The exclusive upper bound of the random number returned. Max must be greater than or equal to min. Default value is Number.MAX_VALUE.
-
-#### Return Value
-A signed integer greater than or equal to min and less or equal than max; that is, the range of return values includes min and max. If min equals max, min is returned. 
-
-#### Examples
-
-```js
-Colibri.utils.getRandomInt(1, 8);  // 6
-Colibri.utils.getRandomInt(1);     // 1.794066025907234e+308
-Colibri.utils.getRandomInt();      // 1.0024528559121937e+308
-Colibri.utils.getRandomInt("12");  // Error
-
-```
-
-### 3. Colibri.utils.arrayFirst()
-> The **arrayFirst()** method returns the first item of an array that is matched the predicate function.
-
-#### Syntax
-```js
-avar first = Colibri.utils.arrayFirst(array, predicate);
-```
-
-#### Parameters
-* **array** - array in which item is searching.
-* **predicate** - (function) function that returns true for searching item.
-
-#### Return Value
-The first item of an array that is matched the predicate function; null if item is not found.
-
-#### Examples
-
-```js
-
-var array = [1, 3, 8];			
-var first = Colibri.utils.arrayFirst(array, function (item){
-	return item > 2;
-});
-// first equal 3
-
-first = Colibri.utils.arrayFirst(array, function (item){
-	return item > 10;
-});
-// first is null
-
-```
-
-### 4. Colibri.utils.arrayRemoveItem()
-> The **arrayRemoveItem()** method removes first accurance of item from an array.
-> The arrayRemoveItem() method removes item from array that is passed as first parameter.
-
-#### Syntax
-```js
-Colibri.utils.arrayRemoveItem(array, itemToRemove);
-```
-
-#### Parameters
-* **array** - array in which item is searching.
-* **itemToRemove** - (object) item of array that should be removed.
-
-#### Examples
-
-```js
-var array = [1, 3, 8];		
-Colibri.utils.arrayRemoveItem(array, 3); // array == [1, 8]
-```
-
-### 5. Colibri.utils.dictionaryForEach()
-> The **dictionaryForEach()** method executes a provided function once per dictionary element.
-> The dictionaryForEach() method executes only for own properties of an object.
-
-#### Parameters
-* **dictionary** - object that structured like a dictionary, for example, {a: 1, b: 2}.
-* **callback** - function to execute for each element, taking two arguments: 
-  * **key** - the current element's key being processed in the dictionary, and 
-  * **value** - the current element's value.
-
-#### Examples
-
-```js
-var dict = {a: 1, b: 2};
-
-function logDictionaryElements(key, value) {
-  console.log("key = " + key + "; value = " + value);
-}
-
-Colibri.utils.dictionaryForEach(dict, logDictionaryElements);
-
-// logs:
-// key = a; value = 1
-// key = b; value = 2
-
-
 ```
 
 ## LICENSE
