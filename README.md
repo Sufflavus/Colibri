@@ -11,7 +11,6 @@ colibri.js does not have any dependencies
 <body>
 
     <script src="../src/colibri.js"></script>
-    <script src="../src/colibri-utils.js"></script>
 </body>
 ```
 
