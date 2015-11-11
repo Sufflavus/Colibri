@@ -14,19 +14,26 @@ colibri.js does not have any dependencies
 </body>
 ```
 
+
+## Browsers support
+Functionality is tested in Chrome >= 46, Opera >= 33.0, Firefox >= 31.0, IE >= 11
+
+## Tests
+This library is delivered with Jasmine tests. To run tests open [SpecRunner.html](https://github.com/Sufflavus/Colibri/blob/master/tests/SpecRunner.html) in your favorite browser.
+
 ## List of extensions
 
-### *[Object extensions](#object)*
+#### *[Object extensions](#object)*
 1. Object.prototype.isArray()
 2. Object.prototype.isString()
 3. Object.prototype.isFunction()
 4. Object.prototype.clone()
 
-### *[Number extensions](#number)*
+#### *[Number extensions](#number)*
 1. Number.isInteger()
 2. Number.isFloat()
 
-### *[String extensions](#string)*
+#### *[String extensions](#string)*
 1. String.prototype.trim()
 2. String.prototype.indexOfInsensitive()
 3. String.prototype.endsWith()
@@ -34,10 +41,10 @@ colibri.js does not have any dependencies
 5. String.prototype.startsWith()
 6. String.prototype.startsWithInsensitive()
 
-### *[Date extensions](#date)*
+#### *[Date extensions](#date)*
 1. Date.prototype.addDays()
 
-### *[Array extensions](#array)*
+#### *[Array extensions](#array)*
 1. Array.prototype.last()
 2. Array.prototype.first()
 3. Array.prototype.isEmpty()
