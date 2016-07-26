@@ -142,6 +142,16 @@
         };
     }
 
+    if (!Array.prototype.pushAll) {
+        Array.prototype.pushAll = function (array) {
+            if(!array.isArray()){
+                throw new Error("The argument should be an array.");
+            }
+            this.push.apply(this, array);
+            return this.length;
+        };
+    }
+
     if (!Array.prototype.contains) {
         Array.prototype.contains = function (item) {
             return this.indexOf(item) >= 0;
