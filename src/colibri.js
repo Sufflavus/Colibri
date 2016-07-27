@@ -144,11 +144,11 @@
 
     if (!Array.prototype.pushAll) {
         Array.prototype.pushAll = function (array) {
-            if(!array.isArray()){
+            if(!array || !array.isArray()) {
                 throw new Error("The argument should be an array.");
             }
-            this.push.apply(this, array);
-            return this.length;
+
+            return this.push.apply(this, array);
         };
     }
 

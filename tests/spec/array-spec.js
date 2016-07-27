@@ -1,12 +1,12 @@
 describe("Array 'last'", function() {
     it("is a function of 'Array' prototype", function() {
         var actual = Array.prototype.last instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {
         var actual = [].last instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns the last element from array with more than one element", function() {
@@ -39,12 +39,12 @@ describe("Array 'last'", function() {
 describe("Array 'first'", function() {
     it("is a function of 'Array' prototype", function() {
         var actual = Array.prototype.first instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {
         var actual = [].first instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns the first element from array with more than one element", function() {
@@ -77,19 +77,19 @@ describe("Array 'first'", function() {
 describe("Array 'isEmpty'", function() {
     it("is a function of 'Array' prototype", function() {               
         var actual = Array.prototype.isEmpty instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {                
         var actual = [].isEmpty instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns false for array with more than one element", function() {       
         var array = ['er', 2, 3];
         var actual = array.isEmpty();
         
-        expect(actual).toBe(false);
+        expect(actual).toBeFalsy();
     });
     
     it("returns false for array with only one element", function() {
@@ -97,7 +97,7 @@ describe("Array 'isEmpty'", function() {
         
         var actual = array.isEmpty();
         
-        expect(actual).toBe(false);
+        expect(actual).toBeFalsy();
     });
     
     it("returns true for empty array", function() {     
@@ -105,7 +105,7 @@ describe("Array 'isEmpty'", function() {
         
         var actual = array.isEmpty();
         
-        expect(actual).toBe(true);       
+        expect(actual).toBeTruthy();       
     }); 
 
     it("returns false for array with empty elements", function() {      
@@ -113,7 +113,7 @@ describe("Array 'isEmpty'", function() {
         
         var actual = array.isEmpty();
         
-        expect(actual).toBe(false);       
+        expect(actual).toBeFalsy();       
     }); 
 
     it("returns false for array with 0", function() {       
@@ -121,7 +121,7 @@ describe("Array 'isEmpty'", function() {
         
         var actual = array.isEmpty();
         
-        expect(actual).toBe(false);       
+        expect(actual).toBeFalsy();       
     }); 
 
     it("returns false for array with empty string", function() {        
@@ -129,7 +129,7 @@ describe("Array 'isEmpty'", function() {
         
         var actual = array.isEmpty();
         
-        expect(actual).toBe(false);       
+        expect(actual).toBeFalsy();       
     }); 
 
     it("returns false for array with empty object", function() {        
@@ -137,7 +137,7 @@ describe("Array 'isEmpty'", function() {
         
         var actual = array.isEmpty();
         
-        expect(actual).toBe(false);       
+        expect(actual).toBeFalsy();       
     }); 
 
     it("returns false for array with empty array", function() {     
@@ -145,26 +145,26 @@ describe("Array 'isEmpty'", function() {
         
         var actual = array.isEmpty();
         
-        expect(actual).toBe(false);       
+        expect(actual).toBeFalsy();       
     }); 
 });
 
 describe("Array 'isNotEmpty'", function() {
     it("is a function of 'Array' prototype", function() {               
         var actual = Array.prototype.isNotEmpty instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {                
         var actual = [].isNotEmpty instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns true for array with more than one element", function() {        
         var array = ['er', 2, 3];
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     });
     
     it("returns true for array with only one element", function() {
@@ -172,7 +172,7 @@ describe("Array 'isNotEmpty'", function() {
         
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     });
     
     it("returns false for empty array", function() {        
@@ -180,7 +180,7 @@ describe("Array 'isNotEmpty'", function() {
         
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(false);       
+        expect(actual).toBeFalsy();       
     }); 
 
     it("returns true for array with empty elements", function() {       
@@ -188,7 +188,7 @@ describe("Array 'isNotEmpty'", function() {
         
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(true);       
+        expect(actual).toBeTruthy();       
     }); 
 
     it("returns true for array with 0", function() {        
@@ -196,7 +196,7 @@ describe("Array 'isNotEmpty'", function() {
         
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(true);       
+        expect(actual).toBeTruthy();       
     }); 
 
     it("returns true for array with empty string", function() {     
@@ -204,7 +204,7 @@ describe("Array 'isNotEmpty'", function() {
         
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(true);       
+        expect(actual).toBeTruthy();       
     }); 
 
     it("returns true for array with empty object", function() {     
@@ -212,7 +212,7 @@ describe("Array 'isNotEmpty'", function() {
         
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(true);       
+        expect(actual).toBeTruthy();       
     }); 
 
     it("returns true for array with empty array", function() {      
@@ -220,19 +220,19 @@ describe("Array 'isNotEmpty'", function() {
         
         var actual = array.isNotEmpty();
         
-        expect(actual).toBe(true);       
+        expect(actual).toBeTruthy();       
     }); 
 });
 
 describe("Array 'removeEmpty'", function() {
     it("is a function of 'Array' prototype", function() {               
         var actual = Array.prototype.removeEmpty instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {                
         var actual = [].removeEmpty instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("removes empty sting elements", function() {     
@@ -348,87 +348,87 @@ describe("Array 'removeEmpty'", function() {
 describe("Array 'contains'", function() {
     it("is a function of 'Array' prototype", function() {               
         var actual = Array.prototype.contains instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {                
         var actual = [].contains instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns true for existing int element", function() {        
         var array = [2, 0, ''];
         var actual = array.contains(2);
         
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
 
     it("returns true for existing empty string element", function() {       
         var array = [2, 0, ''];
         var actual = array.contains('');
         
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
 
     it("returns true for existing zero element", function() {       
         var array = [2, 0, ''];
         var actual = array.contains(0);
         
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
 
     it("returns false for nonexistent element", function() {        
         var array = [2, 0, ''];
         var actual = array.contains(1);
         
-        expect(actual).toBe(false);
+        expect(actual).toBeFalsy();
     });
 
     it("returns false for empty array", function() {        
         var array = [];
         var actual = array.contains(1);
         
-        expect(actual).toBe(false);
+        expect(actual).toBeFalsy();
     });
 
     it("returns false for nonexistent null element", function() {       
         var array = [2, 0];
         var actual = array.contains(null);
         
-        expect(actual).toBe(false);
+        expect(actual).toBeFalsy();
     });
 
     it("returns true for existing null element", function() {       
         var array = [2, 0, null];
         var actual = array.contains(null);
         
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     });
 
     it("returns false for nonexistent undefined element", function() {      
         var array = [2, 0];
         var actual = array.contains(undefined);
         
-        expect(actual).toBe(false);
+        expect(actual).toBeFalsy();
     });
 
     it("returns true for existing undefined element", function() {      
         var array = [2, 0, undefined];
         var actual = array.contains(undefined);
         
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     });
 });
 
 describe("Array 'indexOfInsensitive'", function() {
     it("is a function of 'Array' prototype", function() {               
         var actual = Array.prototype.indexOfInsensitive instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {                
         var actual = [].indexOfInsensitive instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns correct index for existing string element", function() {
@@ -516,12 +516,12 @@ describe("Array 'indexOfInsensitive'", function() {
 describe("Array 'max'", function() {
     it("is a function of 'Array' prototype", function() {               
         var actual = Array.prototype.max instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {                
         var actual = [].max instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns correct result for array of numbers", function() {
@@ -551,12 +551,12 @@ describe("Array 'max'", function() {
 describe("Array 'min'", function() {
     it("is a function of 'Array' prototype", function() {               
         var actual = Array.prototype.min instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("is a function of '[]'", function() {                
         var actual = [].min instanceof Function;
-        expect(actual).toBe(true);
+        expect(actual).toBeTruthy();
     }); 
     
     it("returns correct result for array of numbers", function() {
@@ -657,38 +657,38 @@ describe("Array 'pushAll'", function() {
     });
 
     it("throws an exception if argument is Date", function() {     
-        var initialDate = new Date();       
-        var daysCount = new Date();     
-
+        var arrayA = [2, 1];
+        var arrayB = new Date();
+        
         expect(function() {
-            var actual = initialDate.addDays(daysCount);
-        }).toThrowError("Parameter daysCount should be number."); 
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
     });
 
     it("throws an exception if argument is null", function() {     
-        var initialDate = new Date();       
-        var daysCount = null;       
-
+        var arrayA = [2, 1];
+        var arrayB = null;
+        
         expect(function() {
-            var actual = initialDate.addDays(daysCount);
-        }).toThrowError("Parameter daysCount should be number."); 
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
     });
 
     it("throws an exception if argument is undefined", function() {        
-        var initialDate = new Date();       
-        var daysCount = undefined;      
-
+        var arrayA = [2, 1];
+        var arrayB = undefined;
+        
         expect(function() {
-            var actual = initialDate.addDays(daysCount);
-        }).toThrowError("Parameter daysCount should be number."); 
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
     });
 
     it("throws an exception if argument is bool", function() {        
-        var initialDate = new Date();       
-        var daysCount = undefined;      
-
+        var arrayA = [2, 1];
+        var arrayB = true;
+        
         expect(function() {
-            var actual = initialDate.addDays(daysCount);
-        }).toThrowError("Parameter daysCount should be number."); 
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
     });
 });
