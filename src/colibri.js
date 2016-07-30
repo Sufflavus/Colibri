@@ -158,6 +158,18 @@
         };
     }
 
+    if (!Array.prototype.any) {
+        Array.prototype.any = function (predicate) {
+            if(predicate.isFunction) {
+                return this.some(predicate);
+            }
+            if(!!predicate) {
+                throw new Error("If predicate exists, it should be a function.");
+            }
+            return this.length > 0;
+        };
+    }
+
     if (!Array.prototype.indexOfInsensitive) {
         Array.prototype.indexOfInsensitive = function (searchElement, fromIndex) {
             if(!this.length){
