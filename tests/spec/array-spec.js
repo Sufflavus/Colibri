@@ -692,3 +692,111 @@ describe("Array 'pushAll'", function() {
         }).toThrowError("The argument should be an array."); 
     });
 });
+
+describe("Array 'any'", function() {
+    it("is a function of 'Array' prototype", function() {               
+        var actual = Array.prototype.any instanceof Function;
+        expect(actual).toBeTruthy();
+    }); 
+    
+    it("is a function of '[]'", function() {                
+        var actual = [].any instanceof Function;
+        expect(actual).toBeTruthy();
+    }); 
+    
+    it("returns false for empty array and undefined predicate", function() {        
+        var array = [];
+        var actual = array.any();
+        expect(actual).toBeFalsy();
+    }); 
+
+    it("returns false for empty array and existing predicate", function() {       
+        var array = [];
+        var predicate = function(item) {
+            return x > 0;
+        };
+
+        var actual = array.any(predicate);
+
+        expect(actual).toBeFalsy();
+    }); 
+
+    it("returns true for not empty array and undefined predicate", function() {        
+        var array = [2, 1];
+        var actual = array.any();
+        expect(actual).toBeTruthy();
+    });  
+
+    /*it("returns summ arrays length", function() {
+        var arrayA = [2, 1];
+        var arrayB = [2, 1, 3];
+        var initialCount = arrayA.length;
+        var actual = arrayA.pushAll(arrayB);
+        
+        var expectedCount = initialCount + arrayB.length;
+        expect(actual).toBe(expectedCount);
+    }); 
+
+    it("throws an exception if argument is number", function() {        
+        var arrayA = [2, 1];
+        var arrayB = 1.2;
+        
+        expect(function() {
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
+    }); 
+
+    it("throws an exception if argument is string", function() {       
+        var arrayA = [2, 1];
+        var arrayB = "1";
+        
+        expect(function() {
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
+    });
+
+    it("throws an exception if argument is object", function() {       
+        var arrayA = [2, 1];
+        var arrayB = 1.2;
+        
+        expect(function() {
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
+    });
+
+    it("throws an exception if argument is Date", function() {     
+        var arrayA = [2, 1];
+        var arrayB = new Date();
+        
+        expect(function() {
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
+    });
+
+    it("throws an exception if argument is null", function() {     
+        var arrayA = [2, 1];
+        var arrayB = null;
+        
+        expect(function() {
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
+    });
+
+    it("throws an exception if argument is undefined", function() {        
+        var arrayA = [2, 1];
+        var arrayB = undefined;
+        
+        expect(function() {
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
+    });
+
+    it("throws an exception if argument is bool", function() {        
+        var arrayA = [2, 1];
+        var arrayB = true;
+        
+        expect(function() {
+            arrayA.pushAll(arrayB);
+        }).toThrowError("The argument should be an array."); 
+    });*/
+});
