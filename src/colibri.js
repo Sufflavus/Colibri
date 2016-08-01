@@ -160,13 +160,15 @@
 
     if (!Array.prototype.any) {
         Array.prototype.any = function (predicate) {
-            if(predicate.isFunction) {
-                return this.some(predicate);
+            if(!predicate) {
+                return this.length > 0;
             }
-            if(!!predicate) {
+
+            if(!predicate.isFunction) {
                 throw new Error("If predicate exists, it should be a function.");
             }
-            return this.length > 0;
+
+            return this.some(predicate);
         };
     }
 

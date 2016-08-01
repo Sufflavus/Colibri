@@ -713,7 +713,7 @@ describe("Array 'any'", function() {
     it("returns false for empty array and existing predicate", function() {       
         var array = [];
         var predicate = function(item) {
-            return x > 0;
+            return item > 0;
         };
 
         var actual = array.any(predicate);
@@ -727,76 +727,74 @@ describe("Array 'any'", function() {
         expect(actual).toBeTruthy();
     });  
 
-    /*it("returns summ arrays length", function() {
-        var arrayA = [2, 1];
-        var arrayB = [2, 1, 3];
-        var initialCount = arrayA.length;
-        var actual = arrayA.pushAll(arrayB);
-        
-        var expectedCount = initialCount + arrayB.length;
-        expect(actual).toBe(expectedCount);
+    it("returns true for not empty array and null predicate", function() {        
+        var array = [2, 1];
+        var actual = array.any(null);
+        expect(actual).toBeTruthy();
+    });  
+
+    it("returns true for not empty array and existing predicate", function() {
+        var array = [-1, 1];
+        var predicate = function(item) {
+            return item > 0;
+        };
+
+        var actual = array.any(predicate);
+
+        expect(actual).toBeTruthy();
     }); 
 
     it("throws an exception if argument is number", function() {        
-        var arrayA = [2, 1];
-        var arrayB = 1.2;
+        var array = [2, 1];
+        var predicate = 1;
         
         expect(function() {
-            arrayA.pushAll(arrayB);
-        }).toThrowError("The argument should be an array."); 
+            array.any(predicate);
+        }).toThrowError("If predicate exists, it should be a function."); 
     }); 
 
     it("throws an exception if argument is string", function() {       
-        var arrayA = [2, 1];
-        var arrayB = "1";
+        var array = [2, 1];
+        var predicate = "rr";
         
         expect(function() {
-            arrayA.pushAll(arrayB);
-        }).toThrowError("The argument should be an array."); 
+            array.any(predicate);
+        }).toThrowError("If predicate exists, it should be a function."); 
     });
 
     it("throws an exception if argument is object", function() {       
-        var arrayA = [2, 1];
-        var arrayB = 1.2;
+        var array = [2, 1];
+        var predicate = {};
         
         expect(function() {
-            arrayA.pushAll(arrayB);
-        }).toThrowError("The argument should be an array."); 
+            array.any(predicate);
+        }).toThrowError("If predicate exists, it should be a function."); 
     });
 
     it("throws an exception if argument is Date", function() {     
-        var arrayA = [2, 1];
-        var arrayB = new Date();
+        var array = [2, 1];
+        var predicate = new Date();
         
         expect(function() {
-            arrayA.pushAll(arrayB);
-        }).toThrowError("The argument should be an array."); 
+            array.any(predicate);
+        }).toThrowError("If predicate exists, it should be a function."); 
     });
 
-    it("throws an exception if argument is null", function() {     
-        var arrayA = [2, 1];
-        var arrayB = null;
+    it("throws an exception if argument is array", function() {     
+        var array = [2, 1];
+        var predicate = [];
         
         expect(function() {
-            arrayA.pushAll(arrayB);
-        }).toThrowError("The argument should be an array."); 
-    });
-
-    it("throws an exception if argument is undefined", function() {        
-        var arrayA = [2, 1];
-        var arrayB = undefined;
-        
-        expect(function() {
-            arrayA.pushAll(arrayB);
-        }).toThrowError("The argument should be an array."); 
-    });
+            array.any(predicate);
+        }).toThrowError("If predicate exists, it should be a function."); 
+    });    
 
     it("throws an exception if argument is bool", function() {        
-        var arrayA = [2, 1];
-        var arrayB = true;
+        var array = [2, 1];
+        var predicate = true;
         
         expect(function() {
-            arrayA.pushAll(arrayB);
-        }).toThrowError("The argument should be an array."); 
-    });*/
+            array.any(predicate);
+        }).toThrowError("If predicate exists, it should be a function."); 
+    });
 });
