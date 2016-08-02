@@ -164,7 +164,7 @@
                 return this.length > 0;
             }
 
-            if(!predicate.isFunction) {
+            if(!predicate.isFunction()) {
                 throw new Error("If predicate exists, it should be a function.");
             }
 
