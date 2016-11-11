@@ -1,7 +1,7 @@
 # Colibri
-[![GitHub Wiki](https://img.shields.io/badge/project-wiki-ff69b4.svg)](https://github.com/Sufflavus/Colibri/wiki)
-
 JavaScript custom Extensions
+
+[![GitHub Wiki](https://img.shields.io/badge/project-wiki-ff69b4.svg)](https://github.com/Sufflavus/Colibri/wiki)
 
 ## Setup & Dependencies
 colibri.js does not have any dependencies
