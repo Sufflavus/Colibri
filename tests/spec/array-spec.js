@@ -798,3 +798,29 @@ describe("Array 'any'", function() {
         }).toThrowError("If predicate exists, it should be a function."); 
     });
 });
+
+describe("Array 'distinct'", function() {
+    it("is a function of 'Array' prototype", function() {               
+        var actual = Array.prototype.distinct instanceof Function;
+        expect(actual).toBeTruthy();
+    }); 
+    
+    it("is a function of '[]'", function() {                
+        var actual = [].distinct instanceof Function;
+        expect(actual).toBeTruthy();
+    }); 
+
+    it("returns correct result for empty array", function() {        
+        var array = [];             
+        var actual = array.distinct();       
+        expect(actual.length).toEqual(0);
+    }); 
+    
+    it("returns correct result for not empty array", function() {
+        var array = [1, 2, 2, 5, 1, 3, "one"];
+                
+        var actual = array.distinct();
+        
+        expect(actual).toEqual([1, 2, 5, 3, "one"]);
+    }); 
+});

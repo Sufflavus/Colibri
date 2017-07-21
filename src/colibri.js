@@ -225,6 +225,14 @@
         };
     }
 
+    if (!Array.prototype.distinct) {
+        Array.prototype.distinct = function () {
+            return this.filter(function (item, index, array) {
+                return array.indexOf(item) === index;
+            });
+        };
+    }
+
     /*Function.prototype.memoized = function () {
         var key = JSON.stringify(Array.prototype.slice.call(arguments));
         this._values = this._values || {};
