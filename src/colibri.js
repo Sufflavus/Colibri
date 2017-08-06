@@ -233,6 +233,12 @@
         };
     }
 
+    if (!Array.prototype.flatten) {
+        Array.prototype.flatten = function () {
+            return this.concat.apply([], this);
+        };
+    }
+
     /*Function.prototype.memoized = function () {
         var key = JSON.stringify(Array.prototype.slice.call(arguments));
         this._values = this._values || {};

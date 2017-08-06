@@ -824,3 +824,45 @@ describe("Array 'distinct'", function() {
         expect(actual).toEqual([1, 2, 5, 3, "one"]);
     }); 
 });
+
+describe("Array 'flatten'", function() {
+    it("is a function of 'Array' prototype", function() {               
+        var actual = Array.prototype.flatten instanceof Function;
+        expect(actual).toBeTruthy();
+    }); 
+    
+    it("is a function of '[]'", function() {                
+        var actual = [].flatten instanceof Function;
+        expect(actual).toBeTruthy();
+    }); 
+
+    it("returns correct result for empty array", function() {        
+        var array = [];             
+        var actual = array.flatten();       
+        expect(actual.length).toEqual(0);
+    }); 
+
+    it("returns correct result for one-dimensional array", function() {
+        var array = [1, 2, 3, 4, 5, "six", "seven", 8];
+                
+        var actual = array.flatten();
+        
+        expect(actual).toEqual([1, 2, 3, 4, 5, "six", "seven", 8]);
+    }); 
+    
+    it("returns correct result for array of arrays", function() {
+        var array = [[1, 2, 3], 4, 5, ["six", "seven", 8], []];
+                
+        var actual = array.flatten();
+        
+        expect(actual).toEqual([1, 2, 3, 4, 5, "six", "seven", 8]);
+    }); 
+
+    it("returns correct result for multidimensional array", function() {
+        var array = [[1, 2, [3, 4], 5], ["six", "seven", [8, 9, 10, [11, 12, 13]]]];
+                
+        var actual = array.flatten();
+        
+        expect(actual).toEqual([1, 2, [3, 4], 5, 'six', 'seven', [8, 9, 10, [11, 12, 13]]]);
+    }); 
+});
