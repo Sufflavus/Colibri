@@ -27,35 +27,36 @@ This library is delivered with Jasmine tests. To run tests open [SpecRunner.html
 
 #### *[Object extensions](#object)*
 1. Object.prototype.isArray()
-2. Object.prototype.isString()
-3. Object.prototype.isFunction()
-4. Object.prototype.clone()
+1. Object.prototype.isString()
+1. Object.prototype.isFunction()
+1. Object.prototype.clone()
 
 #### *[Number extensions](#number)*
 1. Number.isInteger()
-2. Number.isFloat()
+1. Number.isFloat()
 
 #### *[String extensions](#string)*
 1. String.prototype.trim()
-2. String.prototype.indexOfInsensitive()
-3. String.prototype.endsWith()
-4. String.prototype.endsWithInsensitive()
-5. String.prototype.startsWith()
-6. String.prototype.startsWithInsensitive()
+1. String.prototype.indexOfInsensitive()
+1. String.prototype.endsWith()
+1. String.prototype.endsWithInsensitive()
+1. String.prototype.startsWith()
+1. String.prototype.startsWithInsensitive()
 
 #### *[Date extensions](#date)*
 1. Date.prototype.addDays()
 
 #### *[Array extensions](#array)*
 1. Array.prototype.last()
-2. Array.prototype.first()
-3. Array.prototype.isEmpty()
-4. Array.prototype.isNotEmpty()
-5. Array.prototype.removeEmpty()
-6. Array.prototype.contains()
-7. Array.prototype.indexOfInsensitive()
-8. Array.prototype.max()
-9. Array.prototype.min()
+1. Array.prototype.first()
+1. Array.prototype.isEmpty()
+1. Array.prototype.isNotEmpty()
+1. Array.prototype.removeEmpty()
+1. Array.prototype.contains()
+1. Array.prototype.indexOfInsensitive()
+1. Array.prototype.max()
+1. Array.prototype.min()
+1. Array.prototype.distinct()
 
 ## <a name="object"></a>Object extensions
 ### 1. Object.prototype.isArray()
@@ -578,6 +579,27 @@ The smalest one element of the array or **undefined** if array is empty.
 [].min();               // undefined
 ["Lorem", 1, 5].min();  // error
 ```
+
+### 10. Array.prototype.distinct()
+> The **distinct()** method returns distinct elements from an array by using strict equality (the same method used by the === or triple-equals operator).
+
+#### Syntax
+```js
+array.distinct()
+```
+
+_For more information visit [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Using_the_Equality_Operators)_
+
+#### Return Value
+Array that contains distinct elements from an array.
+
+#### Examples
+
+```js
+[1, 2, 1, 2, 5, 1, 3, "one"].distinct();  // [1, 2, 5, 3, "one"]
+[].distinct();                            // []
+```
+
 
 ## LICENSE
 [The MIT License](https://github.com/Sufflavus/Colibri/blob/master/LICENSE)

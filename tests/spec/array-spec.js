@@ -817,7 +817,7 @@ describe("Array 'distinct'", function() {
     }); 
     
     it("returns correct result for not empty array", function() {
-        var array = [1, 2, 2, 5, 1, 3, "one"];
+        var array = [1, 2, 1, 2, 5, 1, 3, "one"];
                 
         var actual = array.distinct();
         
