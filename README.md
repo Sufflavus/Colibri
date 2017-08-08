@@ -57,6 +57,7 @@ This library is delivered with Jasmine tests. To run tests open [SpecRunner.html
 1. Array.prototype.max()
 1. Array.prototype.min()
 1. Array.prototype.distinct()
+1. Array.prototype.flatten()
 
 ## <a name="object"></a>Object extensions
 ### 1. Object.prototype.isArray()
@@ -581,7 +582,7 @@ The smalest one element of the array or **undefined** if array is empty.
 ```
 
 ### 10. Array.prototype.distinct()
-> The **distinct()** method returns distinct elements from an array by using strict equality (the same method used by the === or triple-equals operator).
+> The **distinct()** method returns a new array with distinct elements from source array by using strict equality (the same method used by the === or triple-equals operator).
 
 #### Syntax
 ```js
@@ -591,13 +592,33 @@ array.distinct()
 _For more information visit [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Using_the_Equality_Operators)_
 
 #### Return Value
-Array that contains distinct elements from an array.
+New array that contains distinct elements from an array.
 
 #### Examples
 
 ```js
 [1, 2, 1, 2, 5, 1, 3, "one"].distinct();  // [1, 2, 5, 3, "one"]
 [].distinct();                            // []
+```
+
+### 11. Array.prototype.flatten()
+> The **flatten()** method converts two-dimencional array to one-dimensional array.
+
+#### Syntax
+```js
+array.flatten()
+```
+
+#### Return Value
+New one-dimensional array that contains all the elements of two-dimencional array.
+
+#### Examples
+
+```js
+[[1, 2, 3], 4, 5, ["six", "seven", 8], []].flatten();                       // [1, 2, 3, 4, 5, "six", "seven", 8]
+[[1, 2, [3, 4], 5], ["six", "seven", [8, 9, 10, [11, 12, 13]]]].flatten();  // [1, 2, [3, 4], 5, 'six', 'seven', [8, 9, 10, [11, 12, 13]]]
+[1, 2, 3, 4, 5, "six", "seven", 8].flatten();                               // [1, 2, 3, 4, 5, "six", "seven", 8]
+[].flatten();                                                               // []
 ```
 
 
